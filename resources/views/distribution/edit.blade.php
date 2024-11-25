@@ -22,7 +22,7 @@
             <div>
                 <label for="fototoko" class="block text-lg font-semibold text-gray-700">Foto Toko</label>
                 @if ($distribution->fototoko)
-                    <img src="{{ asset('storage/fototoko/' . $distribution->fototoko) }}" alt="Foto Toko" class="mb-2 h-32 w-32 object-cover">
+                    <img src="{{ $distribution->fototoko }}" alt="Foto Toko" class="mb-2 h-32 w-32 object-cover">
                 @endif
                 <input type="file" name="fototoko"
                        class="mt-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 p-3 @error('fototoko') @enderror"

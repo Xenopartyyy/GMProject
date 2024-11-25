@@ -39,7 +39,7 @@
 		  @if (stripos($item->namabrand, 'agree') !== false || stripos($item->deskripsibrand, 'agree') !== false)
 			@if ($index % 2 == 0) <!-- Ganjil (gambar di kiri, deskripsi di kanan) -->
 			  <div class="flex justify-center">
-				<img src="{{ asset('storage/fotobrand/' . $item['fotobrand']) }}" alt="Brand {{ $item->namabrand }}" class="rounded-lg shadow-lg w-full md:w-4/5 lg:w-3/4 object-cover" />
+				<img src="{{ $item['fotobrand'] }}" alt="Brand {{ $item->namabrand }}" class="rounded-lg shadow-lg w-full md:w-4/5 lg:w-3/4 object-cover" />
 			  </div>
 			  <div class="text-gray-900 align-top">
 				<h2 class="text-4xl lg:text-5xl font-bold text-emerald-500 py-8" data-aos="fade-up" data-aos-duration="800">
@@ -59,7 +59,7 @@
 				</p>
 			  </div>
 			  <div class="flex justify-center">
-				<img src="{{ asset('storage/fotobrand/' . $item['fotobrand']) }}" alt="Brand {{ $item->namabrand }}" class="rounded-lg shadow-lg w-full md:w-4/5 lg:w-3/4 object-cover" />
+				<img src="{{ $item['fotobrand'] }}" alt="Brand {{ $item->namabrand }}" class="rounded-lg shadow-lg w-full md:w-4/5 lg:w-3/4 object-cover" />
 			  </div>
 			@endif
 		  @endif
@@ -79,7 +79,7 @@
         <div class="flex flex-wrap justify-center gap-8">
           @foreach ($brand_category as $bc)
             @if (Str::contains($bc->brand->namabrand, 'Agree'))
-              <div class="relative w-full sm:w-72 h-80 bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transform transition hover:-translate-y-2" style="background-image: url('{{ asset('storage/fotocatbrands/' . $bc['fotocatbrands']) }}'); background-size: cover; background-position: center;">
+              <div class="relative w-full sm:w-72 h-80 bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transform transition hover:-translate-y-2" style="background-image: url('{{ $bc['fotocatbrands'] }}'); background-size: cover; background-position: center;">
                   <div class="card absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center p-6 rounded-xl">
                       <h3 class="text-2xl font-semibold text-white mb-2">{{$bc->kategori->nmkategori}}</h3>
                       <p class="text-white text-opacity-90 text-justify">{{$bc->descatbrands}}</p>
@@ -106,7 +106,7 @@
                 $fotoPertama = $p->fotobrg ? json_decode($p->fotobrg, true)[0] ?? null : null;
             @endphp
             @if ($fotoPertama)
-                <img src="{{ asset('storage/fotobrg/' . $fotoPertama) }}" alt="{{ $p->nmbrg }}" class="w-full h-56 object-cover">
+                <img src="{{ $fotoPertama }}" alt="{{ $p->nmbrg }}" class="w-full h-56 object-cover">
             @else
                 <img src="{{ asset('default-image.png') }}" alt="Default Image" class="w-full h-56 object-cover">
             @endif				
@@ -142,7 +142,7 @@
                 $fotoPertama = $p->fotobrg ? json_decode($p->fotobrg, true)[0] ?? null : null;
             @endphp
             @if ($fotoPertama)
-                <img src="{{ asset('storage/fotobrg/' . $fotoPertama) }}" alt="{{ $p->nmbrg }}" class="w-full h-56 object-cover">
+                <img src="{{ $fotoPertama }}" alt="{{ $p->nmbrg }}" class="w-full h-56 object-cover">
             @else
                 <img src="{{ asset('default-image.png') }}" alt="Default Image" class="w-full h-56 object-cover">
             @endif				

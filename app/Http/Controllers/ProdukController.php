@@ -64,20 +64,20 @@ class ProdukController extends Controller
         $produk->link_tokped = $validatedData['link_tokped'];
         $produk->link_ttshop = $validatedData['link_ttshop'];
 
-        $uploadedFiles = [];
+        $uploadedImages = [];
         if ($request->hasFile('fotobrg')) {
             foreach ($request->file('fotobrg') as $file) {
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('storage/fotobrg'), $filename);
-                $uploadedFiles[] = $filename;
+                $fileContent = file_get_contents($file->getRealPath());
+                $uploadedImages[] = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
             }
         }
 
-        $produk->fotobrg = json_encode($uploadedFiles); // Simpan sebagai JSON array
+        $produk->fotobrg = json_encode($uploadedImages); // Simpan sebagai JSON array
         $produk->save();
 
         return redirect('/dashboard/produk');
     }
+
 
     /**
      * Display the specified resource.
@@ -94,17 +94,17 @@ class ProdukController extends Controller
     public function edit($id)
     {
         $produk = Produk::findOrFail($id);
-    
+
         // Pastikan fotobrg berupa array
         $produk->fotobrg = $produk->fotobrg ? json_decode($produk->fotobrg, true) : [];
-    
+
         $produk->ukbrg = $produk->ukbrg ? explode(',', $produk->ukbrg) : [];
         $kategoris = Kategori::all();
         $brands = Brand::all();
-    
+
         return view('produk.edit', compact('produk', 'kategoris', 'brands'));
     }
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -140,23 +140,20 @@ class ProdukController extends Controller
         $produk->link_tokped = $validatedData['link_tokped'];
         $produk->link_ttshop = $validatedData['link_ttshop'];
 
-        $existingImages = $request->input('existing_images', []);
-        $produk->fotobrg = json_encode($existingImages);
-
+        $existingImages = json_decode($produk->fotobrg, true) ?? [];
         if ($request->hasFile('fotobrg')) {
-            $uploadedFiles = [];
             foreach ($request->file('fotobrg') as $file) {
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('storage/fotobrg'), $filename);
-                $uploadedFiles[] = $filename;
+                $fileContent = file_get_contents($file->getRealPath());
+                $existingImages[] = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
             }
-            $produk->fotobrg = json_encode(array_merge($existingImages, $uploadedFiles));
         }
 
+        $produk->fotobrg = json_encode($existingImages);
         $produk->save();
 
         return redirect('/dashboard/produk');
     }
+
 
     /**
      * Remove the specified resource from storage.

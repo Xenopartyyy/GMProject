@@ -24,7 +24,7 @@
             <div>
                 <label for="fotottg" class="block text-lg font-semibold text-gray-700">Foto tentang</label>
                 <@if ($about->fotottg)
-                <img src="{{ asset('storage/fotottg/' . $about->fotottg) }}" alt="Foto Toko" class="mb-2 h-32 w-32 object-cover">
+                <img src="{{ $about->fotottg }}" alt="Foto Toko" class="mb-2 h-32 w-32 object-cover">
                 @endif
                 <input type="file" name="fotottg"
                    class="mt-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 p-3 @error('fotottg') @enderror"
@@ -49,7 +49,7 @@
             <div>
                 <label for="fototim" class="block text-lg font-semibold text-gray-700">Foto Tim Kami</label>
                 @if ($about->fototim)
-                    <img src="{{ asset('storage/fototim/' . $about->fototim) }}" alt="Foto Toko" class="mb-2 h-32 w-32 object-cover">
+                    <img src="{{ $about->fototim }}" alt="Foto Toko" class="mb-2 h-32 w-32 object-cover">
                 @endif
                 <input type="file" name="fototim"
                        class="mt-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 p-3 @error('fototim') @enderror"

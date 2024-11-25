@@ -87,7 +87,7 @@
                 $fotoPertama = $p->fotobrg ? json_decode($p->fotobrg, true)[0] ?? null : null;
             @endphp
             @if ($fotoPertama)
-                <img src="{{ asset('storage/fotobrg/' . $fotoPertama) }}" alt="{{ $p->nmbrg }}" class="w-full h-56 object-cover">
+                <img src="{{ $fotoPertama }}" alt="{{ $p->nmbrg }}" class="w-full h-56 object-cover">
             @else
                 <img src="{{ asset('default-image.png') }}" alt="Default Image" class="w-full h-56 object-cover">
             @endif

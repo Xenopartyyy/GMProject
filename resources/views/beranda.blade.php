@@ -7,10 +7,11 @@
 
 <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
   @foreach ($slide as $key => $item)
-    <div class="w-full flex-shrink-0">
-      <img src={{ asset('storage/banner/' . $item['banner'])}} alt="Banner" class=" w-full h-[60vh] object-cover md:w-[1366px] md:h-[600px] md:object-fill" />
-    </div>
-  @endforeach
+  <div class="w-full flex-shrink-0">
+      <img src="{{ $item['banner'] }}" alt="Banner" class="w-full h-[60vh] object-cover md:w-[1366px] md:h-[600px] md:object-fill" />
+  </div>
+@endforeach
+
 </div>
 
 
@@ -30,7 +31,7 @@
 
   <div class="flex flex-col md:flex-row justify-center py-10 px-4 md:px-10 text-black">
     <div  class="flex justify-center md:w-1/2 p-4 md:p-8 items-center ">
-      <img src="{{ asset('storage/fotottg/' . $about[0]->fotottg) }}" alt="About" class="object-cover w-full md:w-10/12 lg:w-8/12 rounded-lg shadow-md">
+      <img src="{{ $about[0]->fotottg }}" alt="About" class="object-cover w-full md:w-10/12 lg:w-8/12 rounded-lg shadow-md">
     </div>
 
     <div class="flex flex-col p-4 md:p-8 md:w-1/2">
@@ -54,7 +55,7 @@
     @foreach ($brand as $key => $item)
     <div class="bg-white w-full md:w-72 shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
       <figure class="overflow-hidden h-48 w-full">
-        <img src="{{ asset('storage/fotobrand/' . $item['fotobrand']) }}" alt="{{ $item['namabrand'] }}" class="object-cover w-full h-full" />
+        <img src="{{ $item['fotobrand'] }}" alt="{{ $item['namabrand'] }}" class="object-cover w-full h-full" />
       </figure>
       <div class="p-5">
         <h2 class="text-xl font-semibold text-gray-800">{{ $item['namabrand'] }}</h2>
@@ -213,7 +214,7 @@
   <h1 class="text-5xl text-center text-emerald-400 font-bold py-10">Tim Kami</h1>
   <div class="grid md:grid-cols-2">
     <div class="cols-span-5 p-10">
-      <img src="{{ asset('storage/fototim/' . $about[0]->fototim) }}" alt="about" class="w-[547px] h-[377px] object-cover rounded-lg shadow-md">
+      <img src="{{ $about[0]->fototim }}" alt="about" class="w-[547px] h-[377px] object-cover rounded-lg shadow-md">
     </div>
     <div class="cols-span-5 p-10 my-auto">
       <p class="text-justify">{{ $about[0]->timkami }}</p>
@@ -235,7 +236,7 @@
         <div id="geserdistribusi" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
             @foreach ($distribution as $key => $item)
             <div class="flex flex-shrink-0 relative w-64 h-64 sm:w-80 sm:h-80">
-                <img src="{{ asset('storage/fototoko/' . $item['fototoko'])}}" class="object-cover object-center w-full h-full rounded-lg" />
+                <img src="{{ $item['fototoko'] }}" class="object-cover object-center w-full h-full rounded-lg" />
                 <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6 rounded-lg flex flex-col justify-between">
                     <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white">{{ $item['namatoko'] }}</h2>
                     <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white">{{ $item['brand'] }}</h3>

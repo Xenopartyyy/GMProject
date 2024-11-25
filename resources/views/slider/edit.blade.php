@@ -24,15 +24,18 @@
             <div>
                 <label for="banner" class="block text-lg font-semibold text-gray-700">Banner</label>
                 @if ($slider->banner)
-                    <img src="{{ asset('storage/banner/' . $slider->banner) }}" alt="Foto Toko" class="mb-2 h-32 w-32 object-cover">
-                 @endif
-                <input type="file" name="banner"
+                    <img id="previewBanner" src="{{ $slider->banner }}" alt="Banner" class="mb-2 h-32 w-32 object-cover">
+                @else
+                    <img id="previewBanner" src="#" alt="Preview Banner" class="hidden mb-2 h-32 w-32 object-cover">
+                @endif
+                <input type="file" name="banner" id="bannerInput"
                    class="mt-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 p-3 @error('banner') @enderror"
-                   value="{{ old('banner') }}" />
+                   onchange="previewBanner(event)" />
                 @error('banner')
                 <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
                 @enderror
             </div>
+            
 
             <!-- Buttons -->
             <div class="flex items-center justify-end space-x-4 pt-4">

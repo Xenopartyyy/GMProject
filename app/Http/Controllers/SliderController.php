@@ -39,21 +39,22 @@ class SliderController extends Controller
             'banner' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'status' => 'nullable'
         ]);
-        
+
         $slider = new Slider();
         $slider->nama = $validatedData['nama'];
-                
+
         if ($request->hasFile('banner') && $request->file('banner')->isValid()) {
             $file = $request->file('banner');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/banner'), $filename);
-            $slider->banner = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $base64Banner = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
+            $slider->banner = $base64Banner; // Simpan base64 ke database
         }
-    
+
         $slider->save();
 
         return redirect('/dashboard/slider');
     }
+
 
     /**
      * Display the specified resource.
@@ -95,17 +96,12 @@ class SliderController extends Controller
     
         $slider = Slider::findOrFail($id);
         $slider->nama = $validatedData['nama'];
-        
     
         if ($request->hasFile('banner') && $request->file('banner')->isValid()) {
-            $oldFile = public_path('storage/banner/' . $slider->banner);
-            if (File::exists($oldFile)) {
-                File::delete($oldFile);
-            }
             $file = $request->file('banner');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/banner'), $filename);
-            $slider->banner = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $base64Banner = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
+            $slider->banner = $base64Banner; // Simpan base64 ke database
         }
     
         $slider->save();
@@ -113,6 +109,7 @@ class SliderController extends Controller
         return redirect('/dashboard/slider');
     }
     
+
 
     /**
      * Remove the specified resource from storage.
@@ -123,15 +120,15 @@ class SliderController extends Controller
     public function destroy($id)
     {
         $slider = Slider::findOrFail($id);
-    
+
         // Hapus foto dari folder storage
         $filePath = public_path('storage/banner/' . $slider->banner);
         if (File::exists($filePath)) {
             File::delete($filePath);
         }
-    
+
         $slider->delete();
-    
+
         return redirect('/dashboard/slider');
     }
 }

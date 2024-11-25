@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\File;
 
 class BrandController extends Controller
 {
-/**
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -43,17 +43,18 @@ class BrandController extends Controller
         $brand->deskripsibrand = $validatedData['deskripsibrand'];
         $brand->descsingkatbrand = $validatedData['descsingkatbrand'];
 
+        // Convert fotobrand to Base64
         if ($request->hasFile('fotobrand') && $request->file('fotobrand')->isValid()) {
             $file = $request->file('fotobrand');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/fotobrand'), $filename);
-            $brand->fotobrand = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $brand->fotobrand = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
 
         $brand->save();
 
         return redirect('/dashboard/brand');
     }
+
 
     /**
      * Display the specified resource.
@@ -77,7 +78,6 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Ubah validasi fotobrand menjadi opsional
         $validatedData = $request->validate([
             'namabrand' => 'required',
             'fotobrand' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
@@ -85,29 +85,25 @@ class BrandController extends Controller
             'descsingkatbrand' => 'required',
             'status' => 'nullable'
         ]);
-    
-        $brand = brand::findOrFail($id);
+
+        $brand = Brand::findOrFail($id);
         $brand->namabrand = $validatedData['namabrand'];
         $brand->deskripsibrand = $validatedData['deskripsibrand'];
         $brand->descsingkatbrand = $validatedData['descsingkatbrand'];
-    
-        // Hanya update foto jika ada file baru yang diunggah
+
+        // Update fotobrand if provided
         if ($request->hasFile('fotobrand')) {
-            $oldFile = public_path('storage/fotobrand/' . $brand->fotobrand);
-            if (File::exists($oldFile)) {
-                File::delete($oldFile);
-            }
             $file = $request->file('fotobrand');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/fotobrand'), $filename);
-            $brand->fotobrand = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $brand->fotobrand = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
-    
+
         $brand->save();
-    
+
         return redirect('/dashboard/brand');
     }
-    
+
+
 
     /**
      * Remove the specified resource from storage.

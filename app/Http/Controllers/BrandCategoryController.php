@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 
 class BrandCategoryController extends Controller
 {
-   /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -48,17 +48,18 @@ class BrandCategoryController extends Controller
         $brand_category->brands_id = $validatedData['brands_id'];
         $brand_category->descatbrands = $validatedData['descatbrands'];
 
+        // Convert fotocatbrands to Base64
         if ($request->hasFile('fotocatbrands') && $request->file('fotocatbrands')->isValid()) {
             $file = $request->file('fotocatbrands');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/fotocatbrands'), $filename);
-            $brand_category->fotocatbrands = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $brand_category->fotocatbrands = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
 
         $brand_category->save();
 
         return redirect('/dashboard/brandcategory');
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -88,21 +89,18 @@ class BrandCategoryController extends Controller
         $brand_category->brands_id = $validatedData['brands_id'];
         $brand_category->descatbrands = $validatedData['descatbrands'];
 
+        // Update fotocatbrands if provided
         if ($request->hasFile('fotocatbrands')) {
-            $oldFile = public_path('storage/fotocatbrands/' . $brand_category->fotocatbrands);
-            if (File::exists($oldFile)) {
-                File::delete($oldFile);
-            }
             $file = $request->file('fotocatbrands');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/fotocatbrands'), $filename);
-            $brand_category->fotocatbrands = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $brand_category->fotocatbrands = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
 
         $brand_category->save();
 
         return redirect('/dashboard/brandcategory');
     }
+
 
     /**
      * Remove the specified resource from storage.

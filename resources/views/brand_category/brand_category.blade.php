@@ -39,7 +39,7 @@
           <td class="py-2 px-4 border border-gray-300">{{ $category->kategori->nmkategori ?? '-' }}</td>
           <td class="py-2 px-4 border border-gray-300">{{ $category->brand->namabrand}}</td>
           <td class="py-2 px-4 border border-gray-300">
-            <img src="{{ asset('storage/fotocatbrands/' . $category->fotocatbrands) }}" class="w-12 h-12 object-cover rounded" alt="fotocatbrands">
+            <img src="{{ $category->fotocatbrands }}" class="w-12 h-12 object-cover rounded" alt="fotocatbrands">
           </td>
           <td class="py-2 px-4 border border-gray-300">{{ $category->descatbrands }}</td>
         </tr>

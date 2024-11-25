@@ -38,7 +38,7 @@
           </td>
           <td class="py-2 px-4 border border-gray-300">{{ $brnd->namabrand }}</td>
           <td class="py-2 px-4 border border-gray-300">
-            <img src="{{ asset('storage/fotobrand/' . $brnd->fotobrand) }}" class="w-12 h-12 object-cover rounded" alt="fotobrand">
+            <img src="{{ $brnd->fotobrand }}" class="w-12 h-12 object-cover rounded" alt="fotobrand">
           </td>
           <td class="py-2 px-4 border border-gray-300">{{ $brnd->descsingkatbrand }}</td>
           <td class="py-2 px-4 border border-gray-300">{{ $brnd->deskripsibrand }}</td>

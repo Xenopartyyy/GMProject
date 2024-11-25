@@ -8,7 +8,7 @@ use App\Models\Distribution;
 
 class DistributionController extends Controller
 {
- /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -37,21 +37,22 @@ class DistributionController extends Controller
             'status' => 'nullable'
         ]);
 
-        $distribution = new distribution();
+        $distribution = new Distribution();
         $distribution->namatoko = $validatedData['namatoko'];
         $distribution->brand = $validatedData['brand'];
 
+        // Convert fototoko to Base64
         if ($request->hasFile('fototoko') && $request->file('fototoko')->isValid()) {
             $file = $request->file('fototoko');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/fototoko'), $filename);
-            $distribution->fototoko = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $distribution->fototoko = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
 
         $distribution->save();
 
         return redirect('/dashboard/distribution');
     }
+
 
     /**
      * Display the specified resource.
@@ -75,35 +76,30 @@ class DistributionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Ubah validasi fototoko menjadi opsional
         $validatedData = $request->validate([
             'namatoko' => 'required',
             'fototoko' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'brand' => 'required',
             'status' => 'nullable'
         ]);
-    
+
         $distribution = Distribution::findOrFail($id);
         $distribution->namatoko = $validatedData['namatoko'];
         $distribution->brand = $validatedData['brand'];
-    
-        // Hanya update foto jika ada file baru yang diunggah
+
+        // Update fototoko if provided
         if ($request->hasFile('fototoko')) {
-            $oldFile = public_path('storage/fototoko/' . $distribution->fototoko);
-            if (File::exists($oldFile)) {
-                File::delete($oldFile);
-            }
             $file = $request->file('fototoko');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/fototoko'), $filename);
-            $distribution->fototoko = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $distribution->fototoko = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
-    
+
         $distribution->save();
-    
+
         return redirect('/dashboard/distribution');
     }
-    
+
+
 
     /**
      * Remove the specified resource from storage.

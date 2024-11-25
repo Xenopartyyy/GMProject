@@ -38,7 +38,7 @@
           </td>
           <td class="py-2 px-4 border border-gray-300">{{ $dstb->namatoko }}</td>
           <td class="py-2 px-4 border border-gray-300">
-            <img src="{{ asset('storage/fototoko/' . $dstb->fototoko) }}" class="w-12 h-12 object-cover rounded" alt="fototoko">
+            <img src="{{ $dstb->fototoko }}" class="w-12 h-12 object-cover rounded" alt="fototoko">
           </td>
           <td class="py-2 px-4 border border-gray-300">{{ $dstb->brand }}</td>
                   </tr>

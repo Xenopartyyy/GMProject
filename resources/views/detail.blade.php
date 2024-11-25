@@ -22,7 +22,7 @@
                                     $images = json_decode($produk->fotobrg, true) ?? [];
                                 @endphp
                                 @foreach ($images as $image)
-                                    <img src="{{ asset('storage/fotobrg/' . $image) }}" 
+                                    <img src="{{ $image }}" 
                                          alt="{{ $produk->nmbrg }}" 
                                          class="w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] xl:h-[450px]  xl:w-[450px]  object-cover rounded-md shadow-md cursor-pointer">
                                 @endforeach

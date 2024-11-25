@@ -46,11 +46,11 @@
             </div>
           </td>
           <td class="py-2 px-4 border border-gray-300">
-            <img src="{{ asset('storage/fotottg/' . $abt->fotottg) }}" class="w-12 h-12 object-cover rounded" alt="fotottg">
+            <img src="{{ $abt->fotottg }}" class="w-12 h-12 object-cover rounded" alt="fotottg">
           </td>
           <td class="py-2 px-4 border border-gray-300">{{ $abt->ttgkami }}</td>
           <td class="py-2 px-4 border border-gray-300">
-            <img src="{{ asset('storage/fototim/' . $abt->fototim) }}" class="w-12 h-12 object-cover rounded" alt="fototim">
+            <img src="{{ $abt->fototim }}" class="w-12 h-12 object-cover rounded" alt="fototim">
           </td>
           <td class="py-2 px-4 border border-gray-300">{{ $abt->timkami }}</td>
                   </tr>

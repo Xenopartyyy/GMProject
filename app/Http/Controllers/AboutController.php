@@ -42,26 +42,25 @@ class AboutController extends Controller
         $about->ttgkami = $validatedData['ttgkami'];
         $about->timkami = $validatedData['timkami'];
 
-        // Simpan foto Tentang Kami
+        // Convert fotottg to Base64
         if ($request->hasFile('fotottg') && $request->file('fotottg')->isValid()) {
             $file = $request->file('fotottg');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/fotottg'), $filename);
-            $about->fotottg = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $about->fotottg = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
 
-        // Simpan foto Tim Kami
+        // Convert fototim to Base64
         if ($request->hasFile('fototim') && $request->file('fototim')->isValid()) {
             $file = $request->file('fototim');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/fototim'), $filename);
-            $about->fototim = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $about->fototim = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
 
         $about->save();
 
         return redirect('/dashboard/about');
     }
+
 
     /**
      * Display the specified resource.
@@ -97,34 +96,25 @@ class AboutController extends Controller
         $about->ttgkami = $validatedData['ttgkami'];
         $about->timkami = $validatedData['timkami'];
 
-        // Update foto Tentang Kami jika diunggah
+        // Update fotottg if provided
         if ($request->hasFile('fotottg')) {
-            $oldFile = public_path('storage/fotottg/' . $about->fotottg);
-            if (File::exists($oldFile)) {
-                File::delete($oldFile);
-            }
             $file = $request->file('fotottg');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/fotottg'), $filename);
-            $about->fotottg = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $about->fotottg = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
 
-        // Update foto Tim Kami jika diunggah
+        // Update fototim if provided
         if ($request->hasFile('fototim')) {
-            $oldFile = public_path('storage/fototim/' . $about->fototim);
-            if (File::exists($oldFile)) {
-                File::delete($oldFile);
-            }
             $file = $request->file('fototim');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('storage/fototim'), $filename);
-            $about->fototim = $filename;
+            $fileContent = file_get_contents($file->getRealPath());
+            $about->fototim = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
 
         $about->save();
 
         return redirect('/dashboard/about');
     }
+
 
     /**
      * Remove the specified resource from storage.

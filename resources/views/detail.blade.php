@@ -49,7 +49,7 @@
             
             <!-- Product Info Section -->
             <div class="w-full md:w-1/2 md:pl-6 mt-6 md:mt-0">
-                <p class="text-gray-600 text-sm mb-4">No. Artikel: <span class="font-semibold">{{ $produk->noart }}</span></p>
+                <p class="text-gray-600 text-sm mb-4">No Artikel: <span class="font-semibold">{{ $produk->noart }}</span></p>
                 <p class="text-gray-600 text-sm mb-4">Kategori: <span class="font-semibold">{{ $produk->kategori->nmkategori }}</span></p>
                 <p class="text-gray-600 text-sm mb-4">Brand: <span class="font-semibold">{{ $produk->brand->namabrand }}</span></p>
 

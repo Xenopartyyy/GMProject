@@ -27,16 +27,16 @@
 
 {{-- ABOUT START --}}
 <div class="bg-white">
-  <h1 class="text-5xl text-center text-green-400 font-bold pt-10 pb-6" style="font-family: Poppins;">Tentang Kami</h1>
+  <h1 class="text-5xl text-center text-green-400 font-bold pt-10 pb-6" style="font-family: Poppins;" data-aos="fade" data-aos-duration="800">Tentang Kami</h1>
 
   <div class="flex flex-col md:flex-row justify-center py-10 px-4 md:px-10 text-black">
     <div  class="flex justify-center md:w-1/2 p-4 md:p-8 items-center ">
-      <img src="{{ $about[0]->fotottg }}" alt="About" class="object-cover w-full md:w-10/12 lg:w-8/12 rounded-lg shadow-md">
+      <img src="{{ $about[0]->fotottg }}" alt="About" class="object-cover w-full md:w-10/12 lg:w-8/12 rounded-lg shadow-md" data-aos="fade-left" data-aos-duration="800">
     </div>
 
     <div class="flex flex-col p-4 md:p-8 md:w-1/2">
       <div class="text-lg md:text-left leading-relaxed">
-        <p class="text-justify">
+        <p class="text-justify " data-aos="fade-right" data-aos-duration="800">
           {{ $about[0]->ttgkami }}
         </p>
       </div>
@@ -48,7 +48,7 @@
 {{-- BRAND START --}}
 <div class="bg-gradient-to-b from-white to-neutral-50" style="font-family: Poppins;">
   <div class="text-5xl text-center text-white bg-green-500 font-bold py-10">
-    <p data-aos-duration="800">Brand Kami</p>
+    <p data-aos="fade" data-aos-duration="800">Brand Kami</p>
   </div>
 
   <div class="flex flex-wrap gap-8 px-4 md:px-10 lg:px-20 py-16 justify-center">

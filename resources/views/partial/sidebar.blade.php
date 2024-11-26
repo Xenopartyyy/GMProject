@@ -2,8 +2,8 @@
 <div id="app" class="flex min-h-screen bg-gray-100">
 
   <!-- Sidebar -->
-  <div id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gray-800 text-white transform -translate-x-full transition-transform duration-300 ease-in-out z-30 shadow-lg">
-    <div class="p-4 text-2xl font-bold text-center border-b border-gray-700">My App</div>
+  <div id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gray-800 text-white transform -translate-x-full transition-transform duration-300 ease-in-out z-30 shadow-lg overflow-y-auto">
+    <div class="p-4 text-2xl font-bold text-center border-b border-gray-700">MyGM Catalog Dashboard</div>
     <nav class="mt-4 flex-grow space-y-1">
 
       <div class="relative">
@@ -28,6 +28,13 @@
           <a href="{{ url('/dashboard/testimoni') }}" class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition"><i class="fa-regular fa-thumbs-up"></i> Testimoni</a>
           <a href="{{ url('/dashboard/distribution') }}" class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition"><i class="fa-solid fa-network-wired"></i> Distribusi Produk</a>
         </div>
+      </div>
+
+      <div class="relative">
+        <a href="{{ url('/dashboard/perusahaan') }}" class="flex items-center w-full px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded transition">
+          <i class="fa-regular fa-building"></i>
+        <p class="ml-2">Profil Perusahaan</p>
+        </a>
       </div>
 
       <div class="relative">

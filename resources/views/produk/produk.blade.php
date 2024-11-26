@@ -10,7 +10,7 @@
     <table id="produkTable" class="min-w-full bg-white border border-gray-300">
       <thead class="border-b border-gray-300">
         <tr>
-          <th class="py-2 px-4 border border-gray-300">No.</th>
+          <th class="py-2 px-4 border border-gray-300">No</th>
           <th class="py-2 px-4 border border-gray-300">Aksi</th>
           <th class="py-2 px-4 border border-gray-300">Nomor Artikel</th>
           <th class="py-2 px-4 border border-gray-300">Nama Barang</th>
@@ -55,7 +55,7 @@
             <div class="flex flex-wrap justify-center space-x-2">
               @if (!empty($produk->fotobrg))
                 @foreach (json_decode($produk->fotobrg, true) as $foto)
-                  <img src="{{ asset('storage/fotobrg/' . $foto) }}" alt="{{ $produk->nmbrg }}" class="w-16 h-16 object-cover rounded">
+                  <img src="{{ $foto }}" alt="{{ $produk->nmbrg }}" class="w-16 h-16 object-cover rounded">
                 @endforeach
               @else
                 <p>-</p>
@@ -82,19 +82,21 @@
 
 <script>
   $(document).ready(function() {
-    $('#produkTable').DataTable({
-      "scrollX": true,
-      "autoWidth": false,
-      "language": {
-        "search": "Cari:",
-        "lengthMenu": "Tampilkan _MENU_ data per halaman",
-        "zeroRecords": "Tidak ada data yang ditemukan",
-        "info": "Menampilkan _START_ hingga _END_ dari _TOTAL_ data",
-        "infoEmpty": "Tidak ada data tersedia",
-        "infoFiltered": "(disaring dari _MAX_ total data)"
-      },
-      "dom": '<"flex justify-between items-center mb-4"lf>t<"flex justify-between items-center mt-4"ip>'
-    });
+      $('#produkTable').DataTable({
+          columnDefs: [{
+              targets: '_all', // Mengatur seluruh kolom
+              className: 'dt-head-center dt-body-center'  // Menyelaraskan seluruh kolom di tengah
+          }],
+          "language": {
+              "search": "Cari:",
+              "lengthMenu": "Tampilkan _MENU_ data per halaman",
+              "zeroRecords": "Tidak ada data yang ditemukan",
+              "info": "Menampilkan _START_ hingga _END_ dari _TOTAL_ data",
+              "infoEmpty": "Tidak ada data tersedia",
+              "infoFiltered": "(disaring dari _MAX_ total data)"
+          },
+      });
   });
 </script>
+
 @endsection

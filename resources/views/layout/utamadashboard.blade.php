@@ -16,7 +16,9 @@
   <script src="https://kit.fontawesome.com/ca4cafcf9e.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href={{ asset('css/datatables.min.css') }}>
-  
+  <!-- Add this to your layout file -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+
 
 </head>
 
@@ -36,6 +38,9 @@
 <script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
 <script src="{{ asset('js/datatables.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+
+
 
 </body>
 

@@ -154,7 +154,7 @@
                     @if (!empty($produk->fotobrg) && is_array($produk->fotobrg))
                     @foreach ($produk->fotobrg as $index => $foto)
                         <div class="flex items-center space-x-4">
-                            <img src="{{ asset('storage/fotobrg/' . $foto) }}" alt="Gambar {{ $index + 1 }}" class="w-24 h-24 object-cover border rounded-lg">
+                            <img src="{{ $foto }}" alt="Gambar {{ $index + 1 }}" class="w-24 h-24 object-cover border rounded-lg">
                             <input type="hidden" name="existing_images[]" value="{{ $foto }}">
                             <button type="button" class="remove-current-image bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-400 transition">
                                 Hapus

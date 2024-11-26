@@ -19,7 +19,7 @@
     <table id="aboutTable" class="min-w-full bg-white border border-gray-300">
       <thead class="border-b border-gray-300">
         <tr>
-          <th class="py-2 px-4 border border-gray-300">No.</th>
+          <th class="py-2 px-4 border border-gray-300">No</th>
           <th class="py-2 px-4 border border-gray-300">Aksi</th>
           <th class="py-2 px-4 border border-gray-300">Foto Tentang</th>
           <th class="py-2 px-4 border border-gray-300">Tentang Kami</th>
@@ -67,17 +67,21 @@
 
 <script>
   $(document).ready(function() {
-    $('#aboutTable').DataTable({
-      "language": {
-        "search": "Cari:",
-        "lengthMenu": "Tampilkan _MENU_ data per halaman",
-        "zeroRecords": "Tidak ada data yang ditemukan",
-        "info": "Menampilkan _START_ hingga _END_ dari _TOTAL_ data",
-        "infoEmpty": "Tidak ada data tersedia",
-        "infoFiltered": "(disaring dari _MAX_ total data)"
-      },
-      "dom": '<"flex justify-between items-center mb-4"lf>t<"flex justify-between items-center mt-4"ip>'
-    });
+      $('#aboutTable').DataTable({
+          columnDefs: [{
+              targets: '_all', // Mengatur seluruh kolom
+              className: 'dt-head-center dt-body-center'  // Menyelaraskan seluruh kolom di tengah
+          }],
+          "language": {
+              "search": "Cari:",
+              "lengthMenu": "Tampilkan _MENU_ data per halaman",
+              "zeroRecords": "Tidak ada data yang ditemukan",
+              "info": "Menampilkan _START_ hingga _END_ dari _TOTAL_ data",
+              "infoEmpty": "Tidak ada data tersedia",
+              "infoFiltered": "(disaring dari _MAX_ total data)"
+          },
+      });
   });
 </script>
+
 @endsection

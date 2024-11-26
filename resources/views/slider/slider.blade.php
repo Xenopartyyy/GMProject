@@ -11,7 +11,7 @@
             <table id="sliderTable" class="min-w-full bg-white border border-gray-300 ">
                 <thead class="border-b border-gray-300">
                     <tr>
-                        <th class="py-2 px-4 border border-gray-300 text-center">No.</th>
+                        <th class="py-2 px-4 border border-gray-300 text-center">No</th>
                         <th class="py-2 px-4 border border-gray-300 text-center">Aksi</th>
                         <th class="py-2 px-4 border border-gray-300 text-center">Nama Slider</th>
                         <th class="py-2 px-4 border border-gray-300 text-center">Banner</th>
@@ -64,8 +64,7 @@
             $('#sliderTable').DataTable({
                 columnDefs: [{
                     targets: '_all', // Mengatur seluruh kolom
-                    className: 'dt-head-center',
-                    'dt-body-center' // Menyelaraskan seluruh kolom di tengah
+                    className: 'dt-head-center dt-body-center' // Menyelaraskan seluruh kolom di tengah
                 }],
                 "language": {
                     "search": "Cari:",

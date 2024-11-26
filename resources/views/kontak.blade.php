@@ -29,7 +29,7 @@
 
                     <div class="flex items-center text-gray-700">
                         <i class="fas fa-map-marker-alt h-6 w-6 text-cyan-500 mr-2"></i>
-                        <span>Jl. Raya Timur No. 23, Jakarta, Indonesia</span>
+                        <span>Jl. Raya Timur No 23, Jakarta, Indonesia</span>
                     </div>
                 </div>
             </div>

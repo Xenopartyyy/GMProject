@@ -6,6 +6,7 @@ use App\Models\About;
 use App\Models\Testimoni;
 use App\Models\Distribution;
 use App\Models\Brand;
+use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -17,9 +18,10 @@ class MainController extends Controller
         $about = About::all();
         $testimoni = Testimoni::all();
         $distribution = Distribution::all();
+        $perusahaan = Perusahaan::all();
         $brand = Brand::all();
     
-        return view("beranda", compact('slide', 'about', 'testimoni', 'distribution', 'brand'));
+        return view("beranda", compact('slide', 'about', 'testimoni', 'distribution', 'brand', 'perusahaan'));
     }
     
     

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Brand;
+use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,8 @@ class ProdukController extends Controller
     public function index()
     {
         $produks = Produk::with(['kategori', 'brand'])->get();
-        return view('produk.produk', compact('produks'));
+        $perusahaan = Perusahaan::all();
+        return view('produk.produk', compact('produks', 'perusahaan'));
     }
 
     /**
@@ -64,6 +66,7 @@ class ProdukController extends Controller
         $produk->link_tokped = $validatedData['link_tokped'];
         $produk->link_ttshop = $validatedData['link_ttshop'];
 
+        // Handle multiple image uploads
         $uploadedImages = [];
         if ($request->hasFile('fotobrg')) {
             foreach ($request->file('fotobrg') as $file) {
@@ -72,12 +75,11 @@ class ProdukController extends Controller
             }
         }
 
-        $produk->fotobrg = json_encode($uploadedImages); // Simpan sebagai JSON array
+        $produk->fotobrg = json_encode($uploadedImages); // Save as JSON array of base64 URIs
         $produk->save();
 
         return redirect('/dashboard/produk');
     }
-
 
     /**
      * Display the specified resource.
@@ -95,16 +97,14 @@ class ProdukController extends Controller
     {
         $produk = Produk::findOrFail($id);
 
-        // Pastikan fotobrg berupa array
+        // Ensure fotobrg is an array
         $produk->fotobrg = $produk->fotobrg ? json_decode($produk->fotobrg, true) : [];
-
         $produk->ukbrg = $produk->ukbrg ? explode(',', $produk->ukbrg) : [];
         $kategoris = Kategori::all();
         $brands = Brand::all();
 
         return view('produk.edit', compact('produk', 'kategoris', 'brands'));
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -140,6 +140,7 @@ class ProdukController extends Controller
         $produk->link_tokped = $validatedData['link_tokped'];
         $produk->link_ttshop = $validatedData['link_ttshop'];
 
+        // Handle new and existing images
         $existingImages = json_decode($produk->fotobrg, true) ?? [];
         if ($request->hasFile('fotobrg')) {
             foreach ($request->file('fotobrg') as $file) {
@@ -148,12 +149,11 @@ class ProdukController extends Controller
             }
         }
 
-        $produk->fotobrg = json_encode($existingImages);
+        $produk->fotobrg = json_encode($existingImages); // Save as JSON array of base64 URIs
         $produk->save();
 
         return redirect('/dashboard/produk');
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -164,10 +164,7 @@ class ProdukController extends Controller
 
         $fotobrgPaths = json_decode($produk->fotobrg, true) ?? [];
         foreach ($fotobrgPaths as $file) {
-            $filePath = public_path('storage/fotobrg/' . $file);
-            if (File::exists($filePath)) {
-                File::delete($filePath);
-            }
+            // No need to delete files as we are storing base64 URIs
         }
 
         $produk->delete();

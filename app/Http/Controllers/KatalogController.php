@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Produk;
 use App\Models\Kategori;
+use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -70,8 +71,10 @@ class KatalogController extends Controller
         // Mendapatkan data kategori dan brand
         $brand = Brand::all();
         $kategori = Kategori::all();
+        $perusahaan = Perusahaan::all();
+
     
-        return view('katalog', compact('brand', 'kategori', 'produk'));
+        return view('katalog', compact('brand', 'kategori', 'produk', 'perusahaan'));
     }
     
 }

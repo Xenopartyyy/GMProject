@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Produk;
 use App\Models\Kategori;
+use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use App\Models\BrandCategory;
 use Illuminate\Routing\Controller;
@@ -17,8 +18,9 @@ class KopralController extends Controller
         $brand = Brand::all();
         $kategori = Kategori::all();
         $produk = Produk::all();
+        $perusahaan = Perusahaan::all();
         $brand_category = BrandCategory::with('brand', 'kategori')->get();
-        return view('kopral', compact("brand_category", "brand", "kategori", "produk"));
+        return view('kopral', compact("brand_category", "brand", "kategori", "produk", "perusahaan"));
     }
 
 }

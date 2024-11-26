@@ -14,9 +14,11 @@ use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\DistributionController;
 use App\Http\Controllers\BrandCategoryController;
 
+Route::get('/', [MainController::class, 'index']);
 
 Route::get('/contact', function () {
     return view('kontak');
@@ -34,17 +36,11 @@ Route::post('/login/akun/web/greatmale', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('/', [MainController::class, 'index']);
-
-// ;
 
 Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog.index');
 
 Route::get('/katalog/produk/{id}', [ProdukController::class, 'show'])->name('detail');
 
-
-
-   
 Route::prefix('dashboard')->group(function () {
     
     Route::get('/web/greatmale', function () {
@@ -68,6 +64,15 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/{id}/edit', [AboutController::class, 'edit'])->middleware('auth'); 
         Route::put('/{id}', [AboutController::class, 'update'])->middleware('auth');
         Route::delete('/{id}', [AboutController::class, 'destroy'])->middleware('auth'); 
+    });
+
+    Route::prefix('perusahaan')->group(function () {
+        Route::get('/', [PerusahaanController::class, 'index'])->middleware('auth'); 
+        Route::get('/create', [PerusahaanController::class, 'create'])->middleware('auth'); 
+        Route::post('/store', [PerusahaanController::class, 'store'])->middleware('auth');
+        Route::get('/{id}/edit', [PerusahaanController::class, 'edit'])->middleware('auth'); 
+        Route::put('/{id}', [PerusahaanController::class, 'update'])->middleware('auth');
+        Route::delete('/{id}', [PerusahaanController::class, 'destroy'])->middleware('auth'); 
     });
 
     Route::prefix('testimoni')->group(function () {

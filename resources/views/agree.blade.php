@@ -6,10 +6,10 @@
     <div class="absolute inset-0 z-0 bg-gradient-to-r from-red-500 via-green-500 via-yell to-blue-500 animate-rainbow"></div>
 
     <!-- Overlay for readability -->
-    <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
 
     <!-- Content with overlay styling -->
-    <div class="relative z-20 max-w-4xl mx-auto text-center text-white">
+    <div class="relative max-w-4xl mx-auto text-center text-white">
         <h2 class="text-6xl font-bold mb-8">Agree</h2>
     </div>
 

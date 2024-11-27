@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Perusahaan;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class PerusahaanController extends Controller
@@ -16,6 +17,14 @@ class PerusahaanController extends Controller
     {
         $perusahaan = Perusahaan::all();
         return view('perusahaan.perusahaan', compact('perusahaan'));
+
+    }
+
+    public function indexContact()
+    {
+        $perusahaan = Perusahaan::all();
+        $brand = Brand::all();
+        return view('kontak', compact('perusahaan', 'brand'));
 
     }
 

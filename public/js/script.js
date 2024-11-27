@@ -1,39 +1,39 @@
-// SLIDER AWAL START
+// // SLIDER AWAL START
 
-let index = 0;
-const carousel = document.getElementById("carousel");
-const slides = carousel.children.length;
-const intervalTime = 6000; // Waktu perpindahan antar slide dalam milidetik (3000 ms = 3 detik)
+// let index = 0;
+// const carousel = document.getElementById("carousel");
+// const slides = carousel.children.length;
+// const intervalTime = 6000; // Waktu perpindahan antar slide dalam milidetik (3000 ms = 3 detik)
 
-// Fungsi untuk berpindah ke slide berikutnya
-function showNextSlide() {
-    index = index < slides - 1 ? index + 1 : 0;
-    carousel.style.transform = `translateX(-${index * 100}%)`;
-}
+// // Fungsi untuk berpindah ke slide berikutnya
+// function showNextSlide() {
+//     index = index < slides - 1 ? index + 1 : 0;
+//     carousel.style.transform = `translateX(-${index * 100}%)`;
+// }
 
-// Fungsi untuk berpindah ke slide sebelumnya
-function showPrevSlide() {
-    index = index > 0 ? index - 1 : slides - 1;
-    carousel.style.transform = `translateX(-${index * 100}%)`;
-}
+// // Fungsi untuk berpindah ke slide sebelumnya
+// function showPrevSlide() {
+//     index = index > 0 ? index - 1 : slides - 1;
+//     carousel.style.transform = `translateX(-${index * 100}%)`;
+// }
 
-// Event listener untuk tombol prev dan next
-document.getElementById("prev").addEventListener("click", () => {
-    clearInterval(autoSlide); // Hentikan autoplay saat tombol diklik
-    showPrevSlide();
-    autoSlide = setInterval(showNextSlide, intervalTime); // Mulai ulang autoplay setelah interaksi
-});
+// // Event listener untuk tombol prev dan next
+// document.getElementById("prev").addEventListener("click", () => {
+//     clearInterval(autoSlide); // Hentikan autoplay saat tombol diklik
+//     showPrevSlide();
+//     autoSlide = setInterval(showNextSlide, intervalTime); // Mulai ulang autoplay setelah interaksi
+// });
 
-document.getElementById("next").addEventListener("click", () => {
-    clearInterval(autoSlide);
-    showNextSlide();
-    autoSlide = setInterval(showNextSlide, intervalTime);
-});
+// document.getElementById("next").addEventListener("click", () => {
+//     clearInterval(autoSlide);
+//     showNextSlide();
+//     autoSlide = setInterval(showNextSlide, intervalTime);
+// });
 
-// Otomatis beralih slide setiap intervalTime
-let autoSlide = setInterval(showNextSlide, intervalTime);
+// // Otomatis beralih slide setiap intervalTime
+// let autoSlide = setInterval(showNextSlide, intervalTime);
 
-// SLIDER AWAL END
+// // SLIDER AWAL END
 
 // SLIDER TESTI START
 document.addEventListener("DOMContentLoaded", function () {
@@ -70,31 +70,45 @@ document.addEventListener("DOMContentLoaded", function () {
 // SLIDER TESTI END
 
 // DISTRIBUSI START
-document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("geserdistribusi");
+document.addEventListener("DOMContentLoaded", () => {  
+    const container = document.getElementById("geseroverflow");  
 
-    // Gandakan konten untuk menciptakan efek loop
-    container.innerHTML += container.innerHTML;
+    // Gandakan konten untuk menciptakan efek loop  
+    container.innerHTML += container.innerHTML;  
 
-    let scrollPosition = 0; // Posisi scroll saat ini
-    const scrollSpeed = 0.5; // Kecepatan scroll (lebih besar = lebih cepat)
+    let scrollPosition = 0; // Posisi scroll saat ini  
+    const scrollSpeed = 0.5; // Kecepatan scroll (lebih besar = lebih cepat)  
+    const totalWidth = container.scrollWidth / 2; // Total lebar kontainer setelah penggandaan  
 
-    const scrollAnimation = () => {
-        scrollPosition += scrollSpeed;
+    const scrollAnimation = () => {  
+        scrollPosition += scrollSpeed;  
 
-        // Reset posisi scroll jika mencapai setengah panjang kontainer
-        if (scrollPosition >= container.scrollWidth / 2) {
-            scrollPosition = 0;
-        }
+        // Jika posisi scroll sudah melewati total lebar kontainer, reset ke posisi awal tanpa transisi  
+        if (scrollPosition >= totalWidth) {  
+            scrollPosition = 0;  
+            container.style.transition = 'none'; // Nonaktifkan transisi saat reset  
+            container.style.transform = `translateX(0px)`; // Kembali ke posisi awal  
+            // Setelah sedikit delay, aktifkan kembali transisi  
+            setTimeout(() => {  
+                container.style.transition = 'transform 0.1s linear'; // Aktifkan kembali transisi  
+            }, 50); // Delay singkat untuk menghindari flicker  
+        } else {  
+            container.style.transition = 'transform 0.1s linear'; // Pastikan transisi aktif  
+            container.style.transform = `translateX(${-scrollPosition}px)`;  
+        }  
 
-        container.style.transform = `translateX(${-scrollPosition}px)`;
-        requestAnimationFrame(scrollAnimation);
-    };
+        requestAnimationFrame(scrollAnimation);  
+    };  
 
-    scrollAnimation(); // Memulai animasi
+    scrollAnimation(); // Memulai animasi  
 });
 
 // DISTRIBUSI END
+
+// GESER Y START
+
+
+// GESER Y END
 
 // MODAL SCRIPT FOR DETAIL PAGE START
 document.addEventListener("DOMContentLoaded", function () {

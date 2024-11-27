@@ -20,7 +20,7 @@
                 </ul>  
             </div>  
             <a href="{{ url('/katalog') }}" class="text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Katalog Produk</a>  
-            <a href="{{ url('/contact') }}" class="text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Hubungi Kami</a>  
+            <a href="{{ url('/contact') }}" class="text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Tentang Kami</a>  
         </div>  
 
         <!-- Mobile Menu Button -->  

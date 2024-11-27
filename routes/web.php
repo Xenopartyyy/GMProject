@@ -20,9 +20,8 @@ use App\Http\Controllers\BrandCategoryController;
 
 Route::get('/', [MainController::class, 'index']);
 
-Route::get('/contact', function () {
-    return view('kontak');
-});
+Route::get('/contact', [PerusahaanController::class, 'indexContact']); 
+
 
 Route::get('/agree', [AgreeController::class, 'index']);
 Route::get('/kopral', [KopralController::class, 'index']);

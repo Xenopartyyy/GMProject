@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Great Male</title>
+  <title>MyGMCommerce</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href= {{ asset('css/style.css') }}>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
@@ -27,7 +27,7 @@
       
 </head>
 
-<body class="bg-white">
+<body class="bg-white overflow-x-hidden" style="overflow-x: hidden; font-family:Poppins">
     
     @include('partial.navbar')
 
@@ -38,12 +38,10 @@
     @include('partial.footer')
 
 
-</script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src= {{ asset('js/script.js') }}> </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script> AOS.init(); </script>
-<script src= {{ asset('js/script.js') }}> </script>
 
 
 </body>

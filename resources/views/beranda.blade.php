@@ -3,7 +3,7 @@
 @section('konten')
 
 {{-- CAROSEL START --}}
-<div class="relative w-full mx-auto overflow-hidden">
+{{-- <div class="relative w-full mx-auto overflow-hidden">
 
 <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
   @foreach ($slide as $key => $item)
@@ -22,20 +22,41 @@
     &#10095;
 </button>
 
+</div> --}}
+
+<div id="tentang-kami" class="relative py-32 px-4 md:px-10">
+  <!-- Background Video -->
+  <div class="absolute inset-0 z-0">
+    <video autoplay loop muted playsinline class="w-full h-full object-cover">
+      <source src="{{ asset('assets/newpidio.mp4') }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Overlay for readability -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Content with overlay styling -->
+  <div class="relative text-center text-white max-w-4xl mx-auto">
+      <h2 class="text-5xl sm:text-6xl font-extrabold tracking-tight mb-6 text-shadow-lg">GM</h2>
+      <p class="text-lg sm:text-xl font-medium italic">Solusi dalaman pria !</p>
+  </div>
 </div>
+
+
 {{-- CAROSEL END --}}
 
 {{-- ABOUT START --}}
-<div class="bg-white">
-  <h1 class="text-5xl text-center text-green-400 font-bold pt-10 pb-6" style="font-family: Poppins;" data-aos="fade" data-aos-duration="800">Tentang Kami</h1>
+<div class="bg-white overflow-x-hidden">
+  {{-- <h1 class="text-5xl text-center text-green-400 font-bold pt-10 pb-6" style="font-family: Poppins;" data-aos="fade" data-aos-duration="800">Great Male</h1> --}}
 
   <div class="flex flex-col md:flex-row justify-center py-10 px-4 md:px-10 text-black">
-    <div  class="flex justify-center md:w-1/2 p-4 md:p-8 items-center ">
-      <img src="{{ $about[0]->fotottg }}" alt="About" class="object-cover w-full md:w-10/12 lg:w-8/12 rounded-lg shadow-md" data-aos="fade-left" data-aos-duration="800">
+    <div  class="flex justify-center md:w-1/2 p-4 md:p-8 items-center 	">
+      <img src="{{ $about[0]->fotottg }}" alt="About" class="object-cover w-full md:w-10/12 lg:w-8/12 rounded-lg shadow-md " data-aos="fade-left" data-aos-duration="800">
     </div>
 
-    <div class="flex flex-col p-4 md:p-8 md:w-1/2">
-      <div class="text-lg md:text-left leading-relaxed">
+    <div class="	flex flex-col p-4 md:p-8 md:w-1/2">
+      <div class="text-lg md:text-left leading-relaxed 	">
         <p class="text-justify " data-aos="fade-right" data-aos-duration="800">
           {{ $about[0]->ttgkami }}
         </p>
@@ -125,7 +146,7 @@
       Apa Kata Pelanggan Kami?
     </h1>
 
-    <div class="mx-auto max-w-[1340px] px-4 py-12 sm:px-6 lg:me-0 lg:py-12 lg:pe-0 lg:ps-8 xl:py-12">
+    <div class="overflow-x-hidden mx-auto max-w-[1340px] px-4 py-12 sm:px-6 lg:me-0 lg:py-12 lg:pe-0 lg:ps-8 xl:py-12">
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-center lg:gap-16">
         <div class="max-w-xl text-center sm:text-left">
           <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -213,11 +234,11 @@
 <div class="timkami bg-gradient-to-b from-emerald-50 to-white py-10" style="font-family: Poppins">
   <h1 class="text-5xl text-center text-emerald-400 font-bold py-10">Tim Kami</h1>
   <div class="grid md:grid-cols-2">
-    <div class="cols-span-5 p-10">
+    <div class="cols-span-5 p-10 " data-aos="flip-left" data-aos-duration="800">
       <img src="{{ $about[0]->fototim }}" alt="about" class="w-[547px] h-[377px] object-cover rounded-lg shadow-md">
     </div>
-    <div class="cols-span-5 p-10 my-auto">
-      <p class="text-justify">{{ $about[0]->timkami }}</p>
+    <div class="cols-span-5 p-10 " >
+      <p class="text-justify text-black" style="font-family: Poppins"data-aos="flip-right" data-aos-duration="800">{{ $about[0]->timkami }}</p>
     </div>
   </div>
 </div>
@@ -233,7 +254,7 @@
     <div class="w-full relative flex items-center justify-center">
 
       <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
-        <div id="geserdistribusi" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
+        <div id="geseroverflow" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
             @foreach ($distribution as $key => $item)
             <div class="flex flex-shrink-0 relative w-64 h-64 sm:w-80 sm:h-80">
                 <img src="{{ $item['fototoko'] }}" class="object-cover object-center w-full h-full rounded-lg" />

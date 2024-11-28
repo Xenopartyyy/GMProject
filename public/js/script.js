@@ -70,43 +70,42 @@ document.addEventListener("DOMContentLoaded", function () {
 // SLIDER TESTI END
 
 // DISTRIBUSI START
-document.addEventListener("DOMContentLoaded", () => {  
-    const container = document.getElementById("geseroverflow");  
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("geseroverflow");
 
-    // Gandakan konten untuk menciptakan efek loop  
-    container.innerHTML += container.innerHTML;  
+    // Gandakan konten untuk menciptakan efek loop
+    container.innerHTML += container.innerHTML;
 
-    let scrollPosition = 0; // Posisi scroll saat ini  
-    const scrollSpeed = 0.5; // Kecepatan scroll (lebih besar = lebih cepat)  
-    const totalWidth = container.scrollWidth / 2; // Total lebar kontainer setelah penggandaan  
+    let scrollPosition = 0; // Posisi scroll saat ini
+    const scrollSpeed = 0.5; // Kecepatan scroll (lebih besar = lebih cepat)
+    const totalWidth = container.scrollWidth / 2; // Total lebar kontainer setelah penggandaan
 
-    const scrollAnimation = () => {  
-        scrollPosition += scrollSpeed;  
+    const scrollAnimation = () => {
+        scrollPosition += scrollSpeed;
 
-        // Jika posisi scroll sudah melewati total lebar kontainer, reset ke posisi awal tanpa transisi  
-        if (scrollPosition >= totalWidth) {  
-            scrollPosition = 0;  
-            container.style.transition = 'none'; // Nonaktifkan transisi saat reset  
-            container.style.transform = `translateX(0px)`; // Kembali ke posisi awal  
-            // Setelah sedikit delay, aktifkan kembali transisi  
-            setTimeout(() => {  
-                container.style.transition = 'transform 0.1s linear'; // Aktifkan kembali transisi  
-            }, 50); // Delay singkat untuk menghindari flicker  
-        } else {  
-            container.style.transition = 'transform 0.1s linear'; // Pastikan transisi aktif  
-            container.style.transform = `translateX(${-scrollPosition}px)`;  
-        }  
+        // Jika posisi scroll sudah melewati total lebar kontainer, reset ke posisi awal tanpa transisi
+        if (scrollPosition >= totalWidth) {
+            scrollPosition = 0;
+            container.style.transition = "none"; // Nonaktifkan transisi saat reset
+            container.style.transform = `translateX(0px)`; // Kembali ke posisi awal
+            // Setelah sedikit delay, aktifkan kembali transisi
+            setTimeout(() => {
+                container.style.transition = "transform 0.1s linear"; // Aktifkan kembali transisi
+            }, 50); // Delay singkat untuk menghindari flicker
+        } else {
+            container.style.transition = "transform 0.1s linear"; // Pastikan transisi aktif
+            container.style.transform = `translateX(${-scrollPosition}px)`;
+        }
 
-        requestAnimationFrame(scrollAnimation);  
-    };  
+        requestAnimationFrame(scrollAnimation);
+    };
 
-    scrollAnimation(); // Memulai animasi  
+    scrollAnimation(); // Memulai animasi
 });
 
 // DISTRIBUSI END
 
 // GESER Y START
-
 
 // GESER Y END
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HteController;
 use App\Http\Controllers\SemController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AboutController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\GreatMaleController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\DistributionController;
@@ -26,6 +28,8 @@ Route::get('/contact', [PerusahaanController::class, 'indexContact']);
 Route::get('/agree', [AgreeController::class, 'index']);
 Route::get('/kopral', [KopralController::class, 'index']);
 Route::get('/sem', [SemController::class, 'index']);
+Route::get('/hte', [HteController::class, 'index']);
+Route::get('/greatmale', [GreatMaleController::class, 'index']);
 
 Route::get('/hidden-pathway-9348-akun', [RegisterController::class, 'showRegisterForm'])->name('register.form');
 Route::post('/hidden-pathway-9348-akun', [RegisterController::class, 'register'])->name('register');

@@ -59,6 +59,20 @@
                 @enderror
             </div>
 
+            <!-- Video Awal -->
+            <div>
+                <label for="videoawal" class="block text-lg font-semibold text-gray-700">Video Awal</label>
+                @if ($about->videoawal)
+                    <video src="{{ $about->videoawal }}" alt="Foto Toko" class="mb-2 h-32 w-32 object-cover">
+                @endif
+                <input type="file" name="videoawal"
+                       class="mt-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 p-3 @error('videoawal') @enderror"
+                       value="{{ old('videoawal') }}" />
+                @error('videoawal')
+                <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
             <!-- Buttons -->
             <div class="flex items-center justify-end space-x-4 pt-4">
                 <button type="submit" name="submit" value="save" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 transition duration-300">

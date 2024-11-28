@@ -31,6 +31,7 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'videoawal' => 'nullable|mimes:mp4,AVI, WMV, MOV, FLV',
             'ttgkami' => 'required',
             'fotottg' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096',
             'timkami' => 'required',
@@ -41,6 +42,13 @@ class AboutController extends Controller
         $about = new About();
         $about->ttgkami = $validatedData['ttgkami'];
         $about->timkami = $validatedData['timkami'];
+
+        // Convert cideokami to Base64
+        if ($request->hasFile('videoawal') && $request->file('videoawal')->isValid()) {
+            $file = $request->file('videoawal');
+            $fileContent = file_get_contents($file->getRealPath());
+            $about->videoawal = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
+        }
 
         // Convert fotottg to Base64
         if ($request->hasFile('fotottg') && $request->file('fotottg')->isValid()) {
@@ -85,6 +93,7 @@ class AboutController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
+            'videoawal' => 'nullable|mimes:mp4,avi,wmv,mov,flv',
             'ttgkami' => 'required',
             'fotottg' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'timkami' => 'required',
@@ -95,6 +104,13 @@ class AboutController extends Controller
         $about = About::findOrFail($id);
         $about->ttgkami = $validatedData['ttgkami'];
         $about->timkami = $validatedData['timkami'];
+
+        // Update videoawal if provided
+        if ($request->hasFile('videoawal')) {
+            $file = $request->file('videoawal');
+            $fileContent = file_get_contents($file->getRealPath());
+            $about->videoawal = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
+        }
 
         // Update fotottg if provided
         if ($request->hasFile('fotottg')) {

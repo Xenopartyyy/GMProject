@@ -35,7 +35,10 @@ class BrandController extends Controller
             'fotobrand' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096',
             'deskripsibrand' => 'required',
             'descsingkatbrand' => 'required',
-            'status' => 'nullable'
+            'status' => 'nullable',
+            'media' => 'nullable|mimes:jpeg,png,jpg,gif,mp4,mov,avi,mkv|max:40960',
+            'linktree' => 'nullable',
+
         ]);
 
         $brand = new Brand();
@@ -48,6 +51,13 @@ class BrandController extends Controller
             $file = $request->file('fotobrand');
             $fileContent = file_get_contents($file->getRealPath());
             $brand->fotobrand = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
+        }
+
+        // Convert media to Base64
+        if ($request->hasFile('media') && $request->file('media')->isValid()) {
+            $file = $request->file('media');
+            $fileContent = file_get_contents($file->getRealPath());
+            $brand->media = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
 
         $brand->save();
@@ -83,7 +93,9 @@ class BrandController extends Controller
             'fotobrand' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'deskripsibrand' => 'required',
             'descsingkatbrand' => 'required',
-            'status' => 'nullable'
+            'status' => 'nullable',
+            'media' => 'nullable|mimes:jpeg,png,jpg,gif,mp4,mov,avi,mkv|max:40960',
+            'linktree' => 'nullable',
         ]);
 
         $brand = Brand::findOrFail($id);
@@ -96,6 +108,13 @@ class BrandController extends Controller
             $file = $request->file('fotobrand');
             $fileContent = file_get_contents($file->getRealPath());
             $brand->fotobrand = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
+        }
+
+        // Update media if provided
+        if ($request->hasFile('media')) {
+            $file = $request->file('media');
+            $fileContent = file_get_contents($file->getRealPath());
+            $brand->media = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
         }
 
         $brand->save();

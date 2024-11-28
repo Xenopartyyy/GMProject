@@ -1,4 +1,4 @@
-<nav class="bg-info text-white shadow-lg" style="font-family: Poppins">  
+<nav class="bg-sky-400 text-white shadow-lg" style="font-family: Poppins">  
     <div class="max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">  
         <!-- Logo -->  
         <div class="flex items-center">  
@@ -11,7 +11,7 @@
             <div class="relative">  
                 <button id="brand-dropdown-button" class="text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Brand</button>  
                 <!-- Dropdown Menu -->  
-                <ul id="brand-dropdown" class="absolute left-0 hidden bg-info rounded-lg shadow-lg mt-1 w-48 z-10">  
+                <ul id="brand-dropdown" class="absolute left-0 hidden bg-sky-400 rounded-lg shadow-lg mt-1 w-48 z-10">  
                     <li><a href="{{ url('/greatmale') }}" class="block px-4 py-2 text-gray-200 hover:bg-green-500">Great Male</a></li>  
                     <li><a href="{{ url('/agree') }}" class="block px-4 py-2 text-gray-200 hover:bg-green-500">Agree Wear</a></li>  
                     <li><a href="{{ url('/sem') }}" class="block px-4 py-2 text-gray-200 hover:bg-green-500">SEM</a></li>  
@@ -34,12 +34,12 @@
     </div>  
 
     <!-- Mobile Navigation -->  
-    <div id="mobile-menu" class="hidden lg:hidden bg-info">  
+    <div id="mobile-menu" class="hidden lg:hidden bg-sky-400">  
         <ul class="flex flex-col px-4 py-2 space-y-1">  
             <li><a href="{{ url('/') }}" class="block text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Beranda</a></li>  
             <li>  
                 <button class="block w-full text-left text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Brand</button>  
-                <ul class="bg-info rounded-lg shadow-lg mt-1">  
+                <ul class="bg-sky-400 rounded-lg shadow-lg mt-1">  
                     <li><a href="{{ url('/greatmale') }}" class="block px-4 py-2 text-gray-200 hover:bg-green-500">Great Male</a></li>  
                     <li><a href="{{ url('/agree') }}" class="block px-4 py-2 text-gray-200 hover:bg-green-500">Agree Wear</a></li>  
                     <li><a href="{{ url('/sem') }}" class="block px-4 py-2 text-gray-200 hover:bg-green-500">SEM</a></li>  

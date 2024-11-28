@@ -74,7 +74,7 @@
     <div class="text-center bg-orange-400 text-5xl text-white font-bold py-5">
         <h1>Katalog Produk SEM</h1>
     </div>
-    <div class="py-15 bg-gradient-to-b from-white to-orange-200 px-10 md:px-20">
+    <div class="py-15 bg-gradient-to-b from-white to-orange-200 px-3 md:px-20">
         <div class="bg-white container mx-auto y-10 rounded-lg">
 
             <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-20">
@@ -90,10 +90,26 @@
                     <img src="{{ asset('default-image.png') }}" alt="Default Image" class="w-full h-56 object-cover">
                     @endif
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-800">{{ $p->nmbrg }}</h3>
-                        <p class="text-sm text-gray-500 mb-2">Brand: {{ $p->brand->namabrand }}</p>
-                        <p class="text-xl font-bold text-blue-500">Rp{{ number_format($p->hrgbrg, 0, ',', '.') }}
+                        <h3 class="text-lg font-semibold text-gray-800 truncate">{{ $p->nmbrg }}</h3>
+                        <p class="text-sm text-gray-500 mb-1">Artikel:
+                            <span class="font-medium text-gray-700">{{ $p->noart }}</span>
                         </p>
+                        <p class="text-sm text-gray-500 mb-1">Kategori:
+                            <span class="font-medium text-gray-700">{{ $p->kategori->nmkategori }}</span>
+                        </p>
+                        <p class="text-lg font-bold text-blue-500 mt-2">Rp{{ number_format($p->hrgbrg, 0, ',', '.') }}</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <a href="{{ route('detail', ['id' => $p->id]) }}"
+                                class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">
+                                Detail
+                            </a>
+                            <p class="text-sm">
+                                <span
+                                    class="inline-block px-2 py-1 rounded-full text-white font-medium {{ $p->stokbrg === 'Ready' ? 'bg-green-500' : 'bg-red-500' }}">
+                                    {{ ucfirst($p->stokbrg) }}
+                                </span>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 @endforeach

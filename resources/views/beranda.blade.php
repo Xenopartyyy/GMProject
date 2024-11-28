@@ -268,7 +268,7 @@
   <div class="flex items-center justify-center w-full h-full py-8 sm:py-16 px-4">
     <div class="w-full relative flex items-center justify-center">
 
-      <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+      <div class="w-full max-w-6xl h-full mx-auto overflow-x-hidden overflow-y-hidden">
         <div id="geseroverflow"
           class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
           @for ($i = 0; $i < 10; $i++) <!-- Atur jumlah perulangan sesuai kebutuhan -->

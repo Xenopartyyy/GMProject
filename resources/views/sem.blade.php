@@ -2,10 +2,26 @@
 
 @section('konten')
 <!-- Section About Us -->
-<section id="tentang-kami" class="relative bg-gray-50 py-20 px-4 md:px-10">
+<section id="tentang-kami" class="relative bg-gray-50 py-32 px-4 md:px-10">
     <!-- Background Image -->
-    <div class="absolute inset-0 z-0"
-        style="background-image: url('{{ asset('assets/semsport.jpg') }}'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 z-0">
+        @php
+        // Mengambil sumber data URI
+        $media = $brand[4]->media;
+        @endphp
+
+        @if (strpos($media, 'data:video') === 0)
+        <!-- Cek jika tipe media adalah video -->
+        <video autoplay loop muted playsinline class="w-full h-full object-cover">
+            <source src="{{ $media }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        @elseif (strpos($media, 'data:image') === 0)
+        <!-- Cek jika tipe media adalah gambar -->
+        <img src="{{ $media }}" class="w-full h-full object-cover" alt="Media">
+        @else
+
+        @endif
     </div>
 
     <!-- Overlay for readability -->
@@ -14,10 +30,6 @@
     <!-- Content with overlay styling -->
     <div class="relative max-w-4xl mx-auto text-center text-white">
         <h2 class="text-6xl font-bold mb-4 animate-rainbow">SEM</h2>
-        <p class="text-lg md:text-xl mb-8">Kenyamanan dan performa dalam setiap gerakan.</p>
-        <a href="/katalog?search=&kategori=&brand=5"
-            class="bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-full shadow-lg transition duration-300">Jelajahi
-            Produk</a>
     </div>
 </section>
 
@@ -29,13 +41,10 @@
             @if (stripos($item->namabrand, 'sem') !== false)
             <div class="flex justify-center mt-8">
                 <img src="{{ $item['fotobrand'] }}" alt="Brand {{ $item->namabrand }}"
-                    class="rounded-xl shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out w-full md:w-4/5 lg:w-3/4 object-cover" />
+                class="rounded-lg shadow-lg w-full md:w-3/4 md:h-3/4 object-cover my-0 items-center" />
             </div>
 
             <div class="text-gray-900 align-top" data-aos="fade-up" data-aos-duration="1000">
-                <h2 class="text-4xl lg:text-5xl font-bold text-orange-600 py-8 text-center">
-                    {{ $item->namabrand }}
-                </h2>
                 <p class="text-lg lg:text-xl text-justify leading-relaxed text-gray-700">
                     {{ $item->deskripsibrand }}
                 </p>
@@ -48,7 +57,7 @@
 
 <!-- Categories Section -->
 <section id="kategori" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto text-center overflow-x-hidden">
+    <div class="max-w-xl mx-auto text-center overflow-x-hidden">
         <h2 class="text-4xl font-bold text-gray-800 mb-12">Kategori Produk Kami</h2>
         <div id="geseroverflow" class="flex mx-5 space-x-5">
             @for ($i = 0; $i < 10; $i++) <!-- Atur jumlah perulangan sesuai kebutuhan -->
@@ -116,7 +125,7 @@
             </div>
             <!-- Tombol Lihat Lainnya -->
             <div class="flex justify-center pb-10">
-                <a href="/katalog?search=&kategori=&brand=5"
+                <a href="{{ url('/katalog?search=&kategori=&brand=5') }}"
                     class="bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-full shadow-xl transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
                     Lihat Lainnya
                 </a>

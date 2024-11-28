@@ -21,8 +21,6 @@
         <!-- Cek jika tipe media adalah gambar -->
         <img src="{{ $media }}" class="w-full h-full object-cover" alt="Media">
         @else
-        <!-- Jika tipe media tidak dikenal -->
-        <p class="text-white">Media tidak dikenali.</p>
         @endif
     </div>
 

@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Slider element not found");
         return;
     }
+
     const prevButtons = [
         document.getElementById("slider-prev-testi"),
         document.getElementById("slider-prev-desktop-testi"),
@@ -50,21 +51,41 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("slider-next-testi"),
         document.getElementById("slider-next-desktop-testi"),
     ];
-    const slideWidth = slider.children[0].clientWidth + 16;
 
+    // Update lebar slide secara dinamis berdasarkan ukuran layar
+    const getSlideWidth = () => {
+        const slide = slider.children[0];
+        if (!slide) return 0;
+        // Ambil gap antar slide
+        const gap = parseFloat(getComputedStyle(slider).gap) || 0;
+
+        // Menyesuaikan ukuran untuk setiap ukuran layar
+        const slideWidth = slide.clientWidth + gap;
+        return slideWidth;
+    };
+
+    // Fungsi untuk menggulir slider
     const scrollSlider = (direction) => {
+        const slideWidth = getSlideWidth();
         slider.scrollBy({
             left: direction * slideWidth,
             behavior: "smooth",
         });
     };
 
+    // Menambahkan event listener pada tombol prev dan next
     prevButtons.forEach(
         (btn) => btn && btn.addEventListener("click", () => scrollSlider(-1))
     );
     nextButtons.forEach(
         (btn) => btn && btn.addEventListener("click", () => scrollSlider(1))
     );
+
+    // Update ketika ukuran layar berubah
+    window.addEventListener("resize", () => {
+        // Update posisi slider setelah resize jika diperlukan
+        scrollSlider(0); // optional: reset scroll
+    });
 });
 
 // SLIDER TESTI END
@@ -105,10 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // DISTRIBUSI END
 
-// GESER Y START
-
-// GESER Y END
-
 // MODAL SCRIPT FOR DETAIL PAGE START
 document.addEventListener("DOMContentLoaded", function () {
     const track = document.getElementById("carousel-track");
@@ -123,18 +140,25 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
 
     function getImageWidth() {
-        if (window.matchMedia("(max-width: 640px)").matches) return 225;
-        else if (
+        if (window.matchMedia("(max-width: 640px)").matches) {
+            return 225; // Width for screens 0-640px
+        } else if (
             window.matchMedia("(min-width: 641px) and (max-width: 768px)")
                 .matches
-        )
-            return 250;
-        else if (
-            window.matchMedia("(min-width: 769px) and (max-width: 1280px)")
+        ) {
+            return 250; // Width for screens 641-768px
+        } else if (
+            window.matchMedia("(min-width: 769px) and (max-width: 1023px)")
                 .matches
-        )
-            return 250;
-        return 450;
+        ) {
+            return 250; // Width for screens 641-768px
+        } else if (
+            window.matchMedia("(min-width: 1024px) and (max-width: 1280px)")
+                .matches
+        ) {
+            return 300; // Width for screens 769-1280px
+        }
+        return 450; // Default to 450px for larger screens
     }
 
     function updateSliderPosition() {
@@ -167,10 +191,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    closeModal.addEventListener("click", function () {
-        modal.classList.add("hidden");
-    });
-
     modal.addEventListener("click", function (event) {
         if (event.target === modal) {
             modal.classList.add("hidden");
@@ -179,3 +199,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // MODAL SCRIPT FOR DETAIL PAGE END
+
+//SIDEBAR DASHBOARD START
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlaysidebar");
+
+function toggleSidebar() {
+    sidebar.classList.toggle("-translate-x-full");
+    overlay.classList.toggle("hidden");
+}
+
+function toggleSubMenu(menuId) {
+    const menu = document.getElementById(menuId);
+    const icon = document.getElementById(`${menuId}-icon`);
+    menu.classList.toggle("hidden");
+    icon.classList.toggle("rotate-90");
+}
+
+//SIDEBAR DASHBOARD END

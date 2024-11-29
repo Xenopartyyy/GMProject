@@ -5,7 +5,7 @@
 <div class="container mx-auto px-4">
     <h1 class="text-center text-3xl font-bold text-gray-800 my-8">Tambah Distribusi Baru</h1>
 
-    <form action="/dashboard/brand/store" method="POST" enctype="multipart/form-data"
+    <form action="{{ url('/dashboard/brand/store')}}" method="POST" enctype="multipart/form-data"
         class="bg-white p-8 rounded-lg shadow-lg space-y-6">
         @csrf
 
@@ -35,7 +35,7 @@
                 Brand</label>
             <input type="text" name="descsingkatbrand"
                 class="mt-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 p-3 @error('descsingkatbrand') @enderror"
-                value="{{ old('descsingkatbrand') }}" placeholder="Masukkan Deskripsi Brand" />
+                value="{{ old('descsingkatbrand') }}" placeholder="Masukkan Deskripsi Singkat Brand " />
             @error('descsingkatbrand')
             <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
             @enderror
@@ -63,11 +63,11 @@
         </div>
 
         <div>
-            <label for="linktree" class="block text-lg font-semibold text-gray-700">Deskripsi Singkat
+            <label for="linktree" class="block text-lg font-semibold text-gray-700">Linktree Brand
                 Brand</label>
             <input type="text" name="linktree"
                 class="mt-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 p-3 @error('linktree') @enderror"
-                value="{{ old('linktree') }}" placeholder="Masukkan Linktree Brand" />
+                value="{{ old('linktree') }}" placeholder="Masukkan Linktree Brand (Kosongkan Jika Belum Ada)" />
             @error('linktree')
             <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
             @enderror

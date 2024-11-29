@@ -21,7 +21,6 @@
         <img src="{{ $media }}" class="w-full h-full object-cover" alt="Media">
         @else
         <!-- Jika tipe media tidak dikenal -->
-        <p class="text-white">Media tidak dikenali.</p>
         @endif
     </div>
 
@@ -217,10 +216,12 @@
 
 
 <!-- Link to Marketplace -->
+@if(!empty($brand[0]->linktree))
 <section id="marketplace" class="text-center py-20 bg-green-400">
-    <a href="https://marketplace.link.to.agree" target="_blank"
-        class="text-white  bg-slate-600 py-4 px-10 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105">
+    <a href="{{ $brand[0]->linktree }}" target="_blank"
+        class="text-white bg-slate-600 py-4 px-10 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105">
         Beli Sekarang di Marketplace
     </a>
 </section>
+@endif
 @endsection

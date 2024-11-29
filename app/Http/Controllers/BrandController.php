@@ -35,7 +35,6 @@ class BrandController extends Controller
             'fotobrand' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096',
             'deskripsibrand' => 'required',
             'descsingkatbrand' => 'required',
-            'status' => 'nullable',
             'media' => 'nullable|mimes:jpeg,png,jpg,gif,mp4,mov,avi,mkv|max:40960',
             'linktree' => 'nullable',
 
@@ -45,6 +44,7 @@ class BrandController extends Controller
         $brand->namabrand = $validatedData['namabrand'];
         $brand->deskripsibrand = $validatedData['deskripsibrand'];
         $brand->descsingkatbrand = $validatedData['descsingkatbrand'];
+        $brand->linktree = $validatedData['linktree'];
 
         // Convert fotobrand to Base64
         if ($request->hasFile('fotobrand') && $request->file('fotobrand')->isValid()) {
@@ -93,7 +93,6 @@ class BrandController extends Controller
             'fotobrand' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
             'deskripsibrand' => 'required',
             'descsingkatbrand' => 'required',
-            'status' => 'nullable',
             'media' => 'nullable|mimes:jpeg,png,jpg,gif,mp4,mov,avi,mkv|max:40960',
             'linktree' => 'nullable',
         ]);
@@ -102,6 +101,7 @@ class BrandController extends Controller
         $brand->namabrand = $validatedData['namabrand'];
         $brand->deskripsibrand = $validatedData['deskripsibrand'];
         $brand->descsingkatbrand = $validatedData['descsingkatbrand'];
+        $brand->linktree = $validatedData['linktree'];
 
         // Update fotobrand if provided
         if ($request->hasFile('fotobrand')) {

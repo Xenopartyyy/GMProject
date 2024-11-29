@@ -66,7 +66,7 @@
             <p class="text-gray-500">Media tidak dikenali</p>
             @endif
           </td>
-          <td class="py-2 px-4 border border-gray-300">{{ $brnd->linktree }}</td>
+          <td class="py-2 px-4 border border-gray-300"> @if ($brnd->linktree) ✔️ @else ❌ @endif </td>
         </tr>
         @endforeach
       </tbody>

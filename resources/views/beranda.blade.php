@@ -123,7 +123,7 @@
   <div class="text-5xl text-center text-emerald-400 font-bold py-5">
     <p data-aos="fade" data-aos-duration="800">Kelebihan Kami</p>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-6 px-5 py-16 justify-items-center">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-5 py-16 justify-items-center">
     <!-- Card 1 -->
     <div class="rounded-lg shadow-lg p-8 max-w-xs bg-white mx-auto">
       <div class="text-center">
@@ -136,7 +136,7 @@
     <div class="rounded-lg shadow-lg p-8 max-w-xs bg-white mx-auto">
       <div class="text-center">
         <i class="fa-solid fa-money-bill text-6xl py-4" style="color: #63E6BE;"></i>
-        <h2 class="text-xl font-semibold text-emerald-600 mb-2">Harga Terjangkau</h2>
+        <h2 class="text-xl font-semibold text-emerald-600 mb-2">Harga Bersaing</h2>
       </div>
       <p class="text-gray-600 text-justify">Produk berkualitas tinggi dengan harga kompetitif, memberikan nilai terbaik
         bagi pelanggan.</p>
@@ -149,15 +149,6 @@
       </div>
       <p class="text-gray-600 text-justify">Bahan pilihan dan proses ketat memastikan setiap produk awet dan nyaman
         dipakai.</p>
-    </div>
-    <!-- Card 4 -->
-    <div class="rounded-lg shadow-lg p-8 max-w-xs bg-white mx-auto">
-      <div class="text-center">
-        <i class="fa-solid fa-truck-fast text-6xl py-4" style="color: #63E6BE;"></i>
-        <h2 class="text-xl font-semibold text-emerald-600 mb-2">Keunggulan 1</h2>
-      </div>
-      <p class="text-gray-600 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nostrum?
-      </p>
     </div>
   </div>
 </div>
@@ -172,16 +163,15 @@
       Apa Kata Pelanggan Kami?
     </h1>
 
-    <div class="overflow-x-hidden mx-auto max-w-[1340px] px-4 py-12 sm:px-6 lg:me-0 lg:py-12 lg:pe-0 lg:ps-8 xl:py-12">
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-center lg:gap-16">
+    <div class="overflow-x-hidden mx-auto max-w-[1340px] px-4 py-12 sm:px-6 lg:py-12">
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:items-center lg:gap-16">
         <div class="max-w-xl text-center sm:text-left">
           <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Don't just take our word for it...
+            Penilaian Pelanggan
           </h2>
 
           <p class="mt-4 text-gray-700">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas veritatis illo placeat harum porro optio
-            fugit a culpa sunt id!
+            Berikut ini adalah beberapa penilaian dari pelanggan yang telah menggunakan produk kami
           </p>
 
           <div class="hidden lg:mt-8 lg:flex lg:gap-4">
@@ -197,10 +187,10 @@
         </div>
 
         <div class="-mx-6 lg:col-span-2 lg:mx-0">
-          <div id="slider-testi" class="flex overflow-x-hidden snap-x snap-mandatory scroll-smooth space-x-4 p-4">
-            <!-- Slide Items (Testimonial Cards) -->
+          <div id="slider-testi"
+            class="flex overflow-x-auto md:overflow-x-hidden lg:overflow-x-hidden snap-x snap-mandatory scroll-smooth space-x-4 p-4">
             @foreach ($testimoni as $testi)
-            <div class="min-w-[75%] lg:min-w-[40%] snap-center">
+            <div class="min-w-[90%] sm:min-w-[75%] lg:min-w-[40%] snap-center">
               <blockquote class="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8 lg:p-12">
                 <div>
                   <div class="flex gap-0.5 text-green-500">
@@ -237,7 +227,6 @@
       </div>
     </div>
   </div>
-
 </section>
 
 {{-- REVIEW END --}}

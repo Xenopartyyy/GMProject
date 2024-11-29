@@ -17,7 +17,6 @@
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/ca4cafcf9e.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/ca4cafcf9e.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     @vite('resources/css/app.css')
     <!-- Font Awesome Link for Icons -->
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>

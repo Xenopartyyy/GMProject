@@ -33,10 +33,13 @@ class KatalogController extends Controller
             $query->where('noart', 'like', '%' . $noart . '%');
         }
 
-        // Filter berdasarkan nama  produk
-        if ($search) {
-            $query->where('nmbrg', 'like', '%' . $search . '%');
+        // Filter berdasarkan nama produk
+            if ($search) {
+            $search = str_replace(' ', '', $search);
+    
+            $query->whereRaw("REPLACE(nmbrg, ' ', '') LIKE ?", ['%' . $search . '%']);
         }
+
     
         // Filter berdasarkan kategori
         if ($kategori_id) {

@@ -41,7 +41,7 @@
             @if (stripos($item->namabrand, 'sem') !== false)
             <div class="flex justify-center mt-8">
                 <img src="{{ $item['fotobrand'] }}" alt="Brand {{ $item->namabrand }}"
-                class="rounded-lg shadow-lg w-full md:w-3/4 md:h-3/4 object-cover my-0 items-center" />
+                    class="rounded-lg shadow-lg w-full md:w-3/4 md:h-3/4 object-cover my-0 items-center" />
             </div>
 
             <div class="text-gray-900 align-top" data-aos="fade-up" data-aos-duration="1000">
@@ -106,7 +106,8 @@
                         <p class="text-sm text-gray-500 mb-1">Kategori:
                             <span class="font-medium text-gray-700">{{ $p->kategori->nmkategori }}</span>
                         </p>
-                        <p class="text-lg font-bold text-blue-500 mt-2">Rp{{ number_format($p->hrgbrg, 0, ',', '.') }}</p>
+                        <p class="text-lg font-bold text-blue-500 mt-2">Rp{{ number_format($p->hrgbrg, 0, ',', '.') }}
+                        </p>
                         <div class="flex items-center justify-between mt-2">
                             <a href="{{ route('detail', ['id' => $p->id]) }}"
                                 class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">
@@ -133,4 +134,15 @@
         </div>
     </div>
 </section>
+
+@if(!empty($brand[4]->linktree))
+<section id="marketplace" class="text-center py-20 bg-green-400">
+    <a href="{{ $brand[4]->linktree }}" target="_blank"
+        class="text-white bg-slate-600 py-4 px-10 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105">
+        Beli Sekarang di Marketplace
+    </a>
+</section>
+@else
+
+@endif
 @endsection

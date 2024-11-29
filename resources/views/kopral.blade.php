@@ -173,4 +173,13 @@
         });
 </script>
 </div>
+
+@if(!empty($brand[2]->linktree))
+<section id="marketplace" class="text-center py-20 bg-green-400">
+    <a href="{{ $brand[2]->linktree }}" target="_blank"
+        class="text-white bg-slate-600 py-4 px-10 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105">
+        Beli Sekarang di Marketplace
+    </a>
+</section>
+@endif
 @endsection

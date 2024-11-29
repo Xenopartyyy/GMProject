@@ -5,7 +5,7 @@
 <div class="container mx-auto px-4">
     <h1 class="text-center text-3xl font-bold text-gray-800 my-8">Edit brand</h1>
 
-    <form action="/dashboard/brand/{{ $brand->id }}" method="POST" enctype="multipart/form-data"
+    <form action="{{ url('/dashboard/brand/' . $brand->id) }}" method="POST" enctype="multipart/form-data"
         class="bg-white p-8 rounded-lg shadow-lg space-y-6">
         @method('put')
         @csrf
@@ -77,7 +77,8 @@
             <label for="linktree" class="block text-lg font-semibold text-gray-700">Linktree Brand</label>
             <input type="text" name="linktree"
                 class="mt-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 p-3 @error('brand') @enderror"
-                value="{{ old('linktree', $brand->linktree) }}" placeholder="Masukkan Linktree Brand" />
+                value="{{ old('linktree', $brand->linktree) }}"
+                placeholder="Masukkan Linktree Brand (Kosongkan Jika Belum Ada)" />
             @error('brand')
             <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
             @enderror

@@ -19,10 +19,11 @@ use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\DistributionController;
 use App\Http\Controllers\BrandCategoryController;
+use App\Http\Controllers\MainDashboardController;
 
 Route::get('/', [MainController::class, 'index']);
 
-Route::get('/contact', [PerusahaanController::class, 'indexContact']); 
+Route::get('/tentangkami', [PerusahaanController::class, 'indexContact']); 
 
 
 Route::get('/agree', [AgreeController::class, 'index']);
@@ -46,10 +47,7 @@ Route::get('/katalog/produk/{id}', [ProdukController::class, 'show'])->name('det
 
 Route::prefix('dashboard')->group(function () {
     
-    Route::get('/web/greatmale', function () {
-        return view('dashboard');
-    })->middleware('auth');
-        
+    Route::get('/web/greatmale', [MainDashboardController::class, 'index'])->middleware('auth');
 
     Route::prefix('slider')->group(function () {
         Route::get('/', [SliderController::class, 'index'])->middleware('auth'); 

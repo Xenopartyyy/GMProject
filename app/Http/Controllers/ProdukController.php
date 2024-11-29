@@ -88,7 +88,8 @@ class ProdukController extends Controller
     {
         $produk = Produk::with('kategori', 'brand')->findOrFail($id);
         $perusahaan = Perusahaan::all();
-        return view('detail', compact('produk', 'perusahaan'));
+        $brand = Brand::all();
+        return view('detail', compact('produk', 'perusahaan', 'brand'));
     }
 
     /**

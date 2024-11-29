@@ -21,7 +21,6 @@
         <img src="{{ $media }}" class="w-full h-full object-cover" alt="Media">
         @else
         <!-- Jika tipe media tidak dikenal -->
-        <p class="text-white">Media tidak dikenali.</p>
         @endif
     </div>
 
@@ -32,10 +31,7 @@
         <h1 class="text-7xl font-extrabold mb-6 drop-shadow-lg">{{ $item->namabrand }}</h1>
         @endif
         @endforeach
-        <a href="/katalog?search=&kategori=&brand=5"
-            class="bg-white text-black py-3 px-8 rounded-full shadow-lg font-bold hover:bg-yellow-400 hover:text-white transition duration-300">
-            Jelajahi Produk
-        </a>
+
     </div>
 </section>
 
@@ -134,4 +130,13 @@
         </div>
     </div>
 </section>
+
+@if(!empty($brand[3]->linktree))
+<section id="marketplace" class="text-center py-20 bg-green-400">
+    <a href="{{ $brand[3]->linktree }}" target="_blank"
+        class="text-white bg-slate-600 py-4 px-10 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105">
+        Beli Sekarang di Marketplace
+    </a>
+</section>
+@endif
 @endsection

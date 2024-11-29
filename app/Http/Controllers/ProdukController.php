@@ -128,7 +128,8 @@ class ProdukController extends Controller
             'link_tokped' => 'nullable|url',
             'link_ttshop' => 'nullable|url',
         ]);
-
+        
+        // Cari produk yang akan diupdate
         $produk = Produk::findOrFail($id);
         $produk->noart = $validatedData['noart'];
         $produk->kategori_id = $validatedData['kategori_id'];
@@ -141,21 +142,32 @@ class ProdukController extends Controller
         $produk->link_shopee = $validatedData['link_shopee'];
         $produk->link_tokped = $validatedData['link_tokped'];
         $produk->link_ttshop = $validatedData['link_ttshop'];
-
-        // Handle new and existing images
+    
+        // Ambil gambar yang sudah ada (dalam bentuk array)
         $existingImages = json_decode($produk->fotobrg, true) ?? [];
+    
+        // Menangani gambar yang dihapus
+        if ($request->has('deleted_images')) {
+            $deletedImages = $request->input('deleted_images'); // Gambar yang dihapus
+            // Menghapus gambar yang dihapus dari array existingImages
+            $existingImages = array_diff($existingImages, $deletedImages);
+        }
+    
+        // Menangani gambar baru yang diupload
         if ($request->hasFile('fotobrg')) {
             foreach ($request->file('fotobrg') as $file) {
                 $fileContent = file_get_contents($file->getRealPath());
                 $existingImages[] = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
             }
         }
-
-        $produk->fotobrg = json_encode($existingImages); // Save as JSON array of base64 URIs
+    
+        // Update gambar dalam produk (simpan dalam bentuk JSON)
+        $produk->fotobrg = json_encode(array_values($existingImages));
         $produk->save();
-
+    
         return redirect('/dashboard/produk');
     }
+    
 
     /**
      * Remove the specified resource from storage.

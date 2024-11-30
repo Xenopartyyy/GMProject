@@ -111,62 +111,74 @@ class ProdukController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'noart' => 'required|unique:produks,noart,' . $id,
-            'kategori_id' => 'required|exists:kategoris,id',
-            'brands_id' => 'required|exists:brands,id',
-            'nmbrg' => 'required',
-            'fotobrg.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
-            'ukbrg' => 'required|array',
-            'ukbrg.*' => 'in:S,M,L,XL,XXL,3L,4L',
-            'deskbrg' => 'required',
-            'hrgbrg' => 'required|numeric',
-            'stokbrg' => 'required',
-            'link_shopee' => 'nullable|url',
-            'link_tokped' => 'nullable|url',
-            'link_ttshop' => 'nullable|url',
-        ]);
+public function update(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'noart' => 'required|unique:produks,noart,' . $id,
+        'kategori_id' => 'required|exists:kategoris,id',
+        'brands_id' => 'required|exists:brands,id',
+        'nmbrg' => 'required',
+        'fotobrg.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:4096',
+        'ukbrg' => 'required|array',
+        'ukbrg.*' => 'in:S,M,L,XL,XXL,3L,4L',
+        'deskbrg' => 'required',
+        'hrgbrg' => 'required|numeric',
+        'stokbrg' => 'required',
+        'link_shopee' => 'nullable|url',
+        'link_tokped' => 'nullable|url',
+        'link_ttshop' => 'nullable|url',
+    ]);
+
+    // Cari produk yang akan diupdate
+    $produk = Produk::findOrFail($id);
+    $produk->noart = $validatedData['noart'];
+    $produk->kategori_id = $validatedData['kategori_id'];
+    $produk->brands_id = $validatedData['brands_id'];
+    $produk->nmbrg = $validatedData['nmbrg'];
+    $produk->ukbrg = implode(',', $validatedData['ukbrg']);
+    $produk->deskbrg = $validatedData['deskbrg'];
+    $produk->hrgbrg = $validatedData['hrgbrg'];
+    $produk->stokbrg = $validatedData['stokbrg'];
+    $produk->link_shopee = $validatedData['link_shopee'];
+    $produk->link_tokped = $validatedData['link_tokped'];
+    $produk->link_ttshop = $validatedData['link_ttshop'];
+
+    // Ambil gambar yang sudah ada (dalam bentuk array)
+    $existingImages = json_decode($produk->fotobrg, true) ?? [];
+
+    // Menangani gambar yang dihapus
+    if ($request->has('deleted_images') && !empty($request->input('deleted_images'))) {
+        $deletedImages = $request->input('deleted_images'); // Gambar yang dihapus
         
-        // Cari produk yang akan diupdate
-        $produk = Produk::findOrFail($id);
-        $produk->noart = $validatedData['noart'];
-        $produk->kategori_id = $validatedData['kategori_id'];
-        $produk->brands_id = $validatedData['brands_id'];
-        $produk->nmbrg = $validatedData['nmbrg'];
-        $produk->ukbrg = implode(',', $validatedData['ukbrg']);
-        $produk->deskbrg = $validatedData['deskbrg'];
-        $produk->hrgbrg = $validatedData['hrgbrg'];
-        $produk->stokbrg = $validatedData['stokbrg'];
-        $produk->link_shopee = $validatedData['link_shopee'];
-        $produk->link_tokped = $validatedData['link_tokped'];
-        $produk->link_ttshop = $validatedData['link_ttshop'];
-    
-        // Ambil gambar yang sudah ada (dalam bentuk array)
-        $existingImages = json_decode($produk->fotobrg, true) ?? [];
-    
-        // Menangani gambar yang dihapus
-        if ($request->has('deleted_images')) {
-            $deletedImages = $request->input('deleted_images'); // Gambar yang dihapus
+        // Jika $deletedImages adalah string, ubah menjadi array
+        if (is_string($deletedImages)) {
+            $deletedImages = explode(',', $deletedImages); // Pecah string menjadi array
+        }
+
+        // Pastikan bahwa $deletedImages adalah array
+        if (is_array($deletedImages)) {
             // Menghapus gambar yang dihapus dari array existingImages
             $existingImages = array_diff($existingImages, $deletedImages);
         }
-    
-        // Menangani gambar baru yang diupload
-        if ($request->hasFile('fotobrg')) {
-            foreach ($request->file('fotobrg') as $file) {
-                $fileContent = file_get_contents($file->getRealPath());
-                $existingImages[] = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
-            }
-        }
-    
-        // Update gambar dalam produk (simpan dalam bentuk JSON)
-        $produk->fotobrg = json_encode(array_values($existingImages));
-        $produk->save();
-    
-        return redirect('/dashboard/produk');
     }
+
+    // Menangani gambar baru yang diupload
+    if ($request->hasFile('fotobrg')) {
+        foreach ($request->file('fotobrg') as $file) {
+            $fileContent = file_get_contents($file->getRealPath());
+            $existingImages[] = 'data:' . $file->getMimeType() . ';base64,' . base64_encode($fileContent);
+        }
+    }
+
+    // Update gambar dalam produk (simpan dalam bentuk JSON)
+    $produk->fotobrg = json_encode(array_values($existingImages));
+    $produk->save();
+
+    return redirect('/dashboard/produk');
+}
+
+
+
     
 
     /**

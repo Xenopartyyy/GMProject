@@ -49,21 +49,20 @@
             <li><a href="{{ url('/') }}"
                     class="block text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Beranda</a>
             </li>
-            <li>
-                <button
-                    class="block w-full text-left text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Brand</button>
-                <ul class="bg-sky-400 rounded-lg shadow-lg mt-1">
-                    <li><a href="{{ url('/greatmale') }}" class="block px-4 py-2 text-gray-200 hover:bg-green-500">Great
-                            Male</a></li>
-                    <li><a href="{{ url('/agree') }}" class="block px-4 py-2 text-gray-200 hover:bg-green-500">Agree
-                            Wear</a></li>
-                    <li><a href="{{ url('/sem') }}" class="block px-4 py-2 text-gray-200 hover:bg-green-500">SEM</a>
-                    </li>
-                    <li><a href="{{ url('/kopral') }}"
-                            class="block px-4 py-2 text-gray-200 hover:bg-green-500">KOPRAL</a></li>
-                    <li><a href="{{ url('/hte') }}" class="block px-4 py-2 text-gray-200 hover:bg-green-500">HTE</a>
-                    </li>
-                </ul>
+            <li><a href="{{ url('/greatmale') }}"
+                    class="block text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Great
+                    Male</a></li>
+            <li><a href="{{ url('/agree') }}"
+                    class="block text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Agree
+                    Wear</a></li>
+            <li><a href="{{ url('/sem') }}"
+                    class="block text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">SEM</a>
+            </li>
+            <li><a href="{{ url('/kopral') }}"
+                    class="block text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">KOPRAL</a>
+            </li>
+            <li><a href="{{ url('/hte') }}"
+                    class="block text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">HTE</a>
             </li>
             <li><a href="{{ url('/katalog') }}"
                     class="block text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Katalog

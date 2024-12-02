@@ -60,7 +60,7 @@
     <div class="max-w-xl mx-auto text-center overflow-x-hidden">
         <h2 class="text-4xl font-bold text-gray-800 mb-12">Kategori Produk Kami</h2>
         <div id="geseroverflow" class="flex mx-5 space-x-5">
-            @for ($i = 0; $i < 10; $i++) <!-- Atur jumlah perulangan sesuai kebutuhan -->
+            @for ($i = 0; $i < 3; $i++) <!-- Atur jumlah perulangan sesuai kebutuhan -->
                 @foreach ($brand_category as $bc)
                 @if (Str::contains($bc->brand->namabrand, 'SEM'))
                 <div class="flex flex-shrink-0 relative w-64 h-64 sm:w-80 sm:h-80">
@@ -86,7 +86,7 @@
     <div class="py-15 bg-gradient-to-b from-white to-orange-200 px-3 md:px-20">
         <div class="bg-white container mx-auto y-10 rounded-lg">
 
-            <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-20">
+            <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10">
                 @foreach ($produk->where('brand.namabrand', 'SEM')->take(3) as $p)
                 <div
                     class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105">

@@ -79,10 +79,10 @@
             <!-- Reset and Apply Button -->
             <div class="lg:col-span-4 flex justify-end gap-4">
                 <button type="submit"
-                    class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-2 rounded-lg shadow-lg transition-transform transform hover:scale-105">Terapkan
+                    class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 text-center px-6 py-2 rounded-lg shadow-lg transition-transform transform hover:scale-105">Terapkan
                     Filter</button>
                 <a href="{{ route('katalog.index') }}"
-                    class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg shadow-lg transition-transform transform hover:scale-105">Reset
+                    class="bg-red-500 hover:bg-red-600 text-white text-center px-6 py-2 rounded-lg shadow-lg transition-transform transform hover:scale-105">Reset
                     Filter</a>
             </div>
         </form>

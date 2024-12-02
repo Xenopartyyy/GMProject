@@ -100,10 +100,10 @@
         <div class="text-center bg-green-600 text-5xl text-white font-bold py-6">
             <h1>Katalog Produk Kopral</h1>
         </div>
-        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-12 text-white">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10 text-white">
             @foreach ($produk->where('brand.namabrand', 'Kopral')->take(3) as $p)
             <div
-                class="bg-white px-10 shadow-lg rounded-2xl overflow-hidden transform transition-transform hover:scale-105 hover:shadow-2xl">
+                class="bg-white shadow-lg rounded-2xl overflow-hidden transform transition-transform hover:scale-105 hover:shadow-2xl">
                 @php
                 $fotoPertama = $p->fotobrg ? json_decode($p->fotobrg, true)[0] ?? null : null;
                 @endphp

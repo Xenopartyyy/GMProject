@@ -113,7 +113,7 @@
     <div class="text-center bg-green-400 text-5xl text-white font-bold py-5">
         <h1>Katalog Produk Agree</h1>
     </div>
-    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 py-20 text-white">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10 text-white">
         @foreach ($produk->where('brand.namabrand', 'Agree')->take(3) as $p)
         <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105">
             @php
@@ -152,7 +152,7 @@
 
 
     <!-- Tombol Lihat Lainnya -->
-    <div class="flex justify-center pb-10 pr-10 md:justify-end">
+    <div class="flex justify-center pb-10 md:justify-end">
         <a href="{{ url('/katalog?search=&kategori=&brand=1') }}"
             class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full shadow-xl transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
             Lihat Lainnya
@@ -166,7 +166,7 @@
     <div class="text-center bg-blue-400 text-5xl text-white font-bold py-5">
         <h1 class="text-yellow-300">★ <span class="text-white">Katalog Produk Agree Kids</span> ★</h1>
     </div>
-    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 py-20 text-white">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10 text-white">
         @foreach ($produk->where('brand.namabrand', 'Agree Kids')->take(3) as $p)
         <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105">
             @php
@@ -205,7 +205,7 @@
 
 
     <!-- Tombol Lihat Lainnya -->
-    <div class="flex justify-center pb-10 pr-10 md:justify-end">
+    <div class="flex justify-center pb-10 md:justify-end">
         <a href="{{ url('/katalog?search=&kategori=&brand=6') }}"
             class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-full shadow-xl transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
             Lihat Lainnya

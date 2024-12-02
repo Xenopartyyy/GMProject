@@ -82,7 +82,7 @@
 <!-- Product Catalog Section -->
 <section id="katalog-produk" class=" bg-white pb-20">
     <div class="text-center bg-yellow-400 text-5xl text-white font-bold py-5">
-        <h1>Katalog Produk HTE</h1>
+        <h1>Katalog HTE</h1>
     </div>
     <div class="container mx-auto px-6 md:px-20 mt-12">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">

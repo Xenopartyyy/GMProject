@@ -260,19 +260,16 @@
       <div class="w-full max-w-6xl h-full mx-auto overflow-x-hidden overflow-y-hidden">
         <div id="geseroverflow"
           class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
-          @for ($i = 0; $i < 10; $i++) <!-- Atur jumlah perulangan sesuai kebutuhan -->
-            @foreach ($distribution as $key => $item)
-            <div class="flex flex-shrink-0 relative w-64 h-64 sm:w-80 sm:h-80">
-              <img src="{{ $item['fototoko'] }}" class="object-cover object-center w-full h-full rounded-lg" />
-              <div
-                class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6 rounded-lg flex flex-col justify-between">
-                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white">{{ $item['namatoko'] }}</h2>
-                <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white">{{ $item['brand'] }}
-                </h3>
-              </div>
+          @foreach ($distribution as $key => $item)
+          <div class="flex flex-shrink-0 relative w-64 h-64 sm:w-80 sm:h-80">
+            <img src="{{ $item['fototoko'] }}" class="object-cover object-center w-full h-full rounded-lg" />
+            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6 rounded-lg flex flex-col justify-between">
+              <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white">{{ $item['namatoko'] }}</h2>
+              <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white">{{ $item['brand'] }}
+              </h3>
             </div>
-            @endforeach
-            @endfor
+          </div>
+          @endforeach
         </div>
       </div>
 

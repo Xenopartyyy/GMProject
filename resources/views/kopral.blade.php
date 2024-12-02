@@ -95,10 +95,10 @@
         </div>
     </section>
 
-    <!-- Katalog Produk Section -->
+    <!-- Katalog Section -->
     <section id="katalog-produk" class="w-full md:w-4/5 bg-white relative">
         <div class="text-center bg-green-600 text-5xl text-white font-bold py-6">
-            <h1>Katalog Produk Kopral</h1>
+            <h1>Katalog Kopral</h1>
         </div>
         <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10 text-white">
             @foreach ($produk->where('brand.namabrand', 'Kopral')->take(3) as $p)

@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML += container.innerHTML;
 
     let scrollPosition = 0; // Posisi scroll saat ini
-    const scrollSpeed = 0.5; // Kecepatan scroll (lebih besar = lebih cepat)
+    const scrollSpeed = 0.2; // Kecepatan scroll (lebih besar = lebih cepat)
     const totalWidth = container.scrollWidth / 2; // Total lebar kontainer setelah penggandaan
 
     const scrollAnimation = () => {

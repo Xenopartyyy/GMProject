@@ -81,7 +81,7 @@
 <!-- Product Catalog Section -->
 <section id="katalog-produk" class="bg-orange-200 pb-12">
     <div class="text-center bg-orange-400 text-5xl text-white font-bold py-5">
-        <h1>Katalog Produk SEM</h1>
+        <h1>Katalog SEM</h1>
     </div>
     <div class="py-15 bg-gradient-to-b from-white to-orange-200 px-3 md:px-20">
         <div class="bg-white container mx-auto y-10 rounded-lg">

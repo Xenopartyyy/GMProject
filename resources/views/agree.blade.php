@@ -60,8 +60,12 @@
             </div>
             @else
             <!-- Genap (gambar di kanan, deskripsi di kiri) -->
+            <div class="block md:hidden flex justify-center pt-10">
+                <img src="{{ $item['fotobrand'] }}" alt="Brand {{ $item->namabrand }}"
+                    class="rounded-lg shadow-lg w-full md:w-3/4 md:h-3/4 object-cover" />
+            </div>
             <div class="text-gray-900 align-top py-10">
-                <h2 class="text-4xl lg:text-5xl font-bold text-blue-400 py-8" data-aos="fade-up"
+                <h2 class="text-4xl lg:text-5xl font-bold text-blue-400 py-8 text-center" data-aos="fade-up"
                     data-aos-duration="800">
                     {{ $item->namabrand }}
                 </h2>
@@ -70,7 +74,7 @@
                     {{ $item->deskripsibrand }}
                 </p>
             </div>
-            <div class="flex justify-center">
+            <div class="flex justify-center hidden md:block">
                 <img src="{{ $item['fotobrand'] }}" alt="Brand {{ $item->namabrand }}"
                     class="rounded-lg shadow-lg w-full md:w-3/4 md:h-3/4 object-cover" />
             </div>
@@ -89,7 +93,7 @@
 <section id="kategori" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto text-center">
         <h2 class="text-4xl font-bold text-gray-800 mb-12">Produk Kami </h2>
-        <div class="flex flex-wrap justify-center gap-8">
+        <div class="flex flex-wrap justify-center gap-8 px-10 md:px-0">
             @foreach ($brand_category as $bc)
             @if (Str::contains($bc->brand->namabrand, 'Agree'))
             <div class="relative w-full sm:w-72 h-80 bg-gray-50 rounded-xl shadow-lg hover:shadow-xl transform transition hover:-translate-y-2"
@@ -111,7 +115,7 @@
 {{-- Agree Section --}}
 <section id="katalog-produk" class="py-15 bg-white relative">
     <div class="text-center bg-green-400 text-5xl text-white font-bold py-5">
-        <h1>Katalog Produk Agree</h1>
+        <h1>Katalog Agree</h1>
     </div>
     <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10 text-white">
         @foreach ($produk->where('brand.namabrand', 'Agree')->take(3) as $p)
@@ -164,7 +168,7 @@
 {{-- Agree Kids --}}
 <section id="katalog-produk" class="py-15 bg-white relative">
     <div class="text-center bg-blue-400 text-5xl text-white font-bold py-5">
-        <h1 class="text-yellow-300">★ <span class="text-white">Katalog Produk Agree Kids</span> ★</h1>
+        <h1 class="text-white">Katalog Agree Kids</h1>
     </div>
     <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10 text-white">
         @foreach ($produk->where('brand.namabrand', 'Agree Kids')->take(3) as $p)

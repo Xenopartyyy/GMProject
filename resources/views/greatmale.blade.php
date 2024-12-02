@@ -80,7 +80,7 @@
 <!-- Product Catalog Section -->
 <section id="katalog-produk" class="bg-gray-200 pb-12">
     <div class="text-center bg-gray-400 text-5xl text-white font-bold py-5">
-        <h1>Katalog Produk Great Male</h1>
+        <h1>Katalog Great Male</h1>
     </div>
     <div class="py-15 bg-gradient-to-b from-white to-gray-200 px-10 md:px-20">
         <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 py-20 text-white">

@@ -11,9 +11,9 @@
 
   <!-- Statistik Utama -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-    <!-- Barang yang Terunggah -->
+    <!-- Produk yang Terunggah -->
     <div class="bg-white shadow-lg rounded-lg p-6">
-      <h3 class="text-lg font-semibold text-gray-700">Barang yang Terunggah</h3>
+      <h3 class="text-lg font-semibold text-gray-700">Produk yang Terunggah</h3>
       <p class="text-4xl font-bold text-indigo-600 mt-4">{{ $produk ? count($produk) : 0 }}</p>
     </div>
 
@@ -25,15 +25,15 @@
 
     <!-- Banyaknya Kategori -->
     <div class="bg-white shadow-lg rounded-lg p-6">
-      <h3 class="text-lg font-semibold text-gray-700">Banyaknya Kategori Barang</h3>
+      <h3 class="text-lg font-semibold text-gray-700">Banyaknya Kategori Produk</h3>
       <p class="text-4xl font-bold text-green-600 mt-4">{{ $kategori ? count($kategori) : 0 }}</p>
     </div>
   </div>
 
   <div class="flex flex-wrap gap-6 px-6">
-    <!-- Jumlah Barang Tiap Brand -->
+    <!-- Jumlah Produk Tiap Brand -->
     <div class="bg-gray-50 shadow-md rounded-lg p-6 flex-1 min-w-[300px]">
-      <h3 class="text-xl font-semibold text-gray-800 mb-4">Jumlah Barang Tiap Brand</h3>
+      <h3 class="text-xl font-semibold text-gray-800 mb-4">Jumlah Produk Tiap Brand</h3>
       @foreach ($brand as $br)
       <div class="flex justify-between items-center bg-white shadow-sm rounded p-4 mb-2">
         <p class="text-gray-700 font-medium">{{ $br->namabrand }}</p>

@@ -6,7 +6,6 @@
     <!-- Background Video -->
     <div class="absolute inset-0 z-0">
         @php
-        // Mengambil sumber data URI
         $media = $brand[0]->media;
         @endphp
 
@@ -20,7 +19,6 @@
         <!-- Cek jika tipe media adalah gambar -->
         <img src="{{ $media }}" class="w-full h-full object-cover" alt="Media">
         @else
-        <!-- Jika tipe media tidak dikenal -->
         @endif
     </div>
 
@@ -43,7 +41,6 @@
             @foreach ($brand as $index => $item)
             @if (stripos($item->namabrand, 'agree') !== false || stripos($item->deskripsibrand, 'agree') !== false)
             @if ($index % 2 == 0)
-            <!-- Ganjil (gambar di kiri, deskripsi di kanan) -->
             <div class="flex justify-center">
                 <img src="{{ $item['fotobrand'] }}" alt="Brand {{ $item->namabrand }}"
                     class="rounded-lg shadow-lg w-full md:w-3/4 md:h-3/4 object-cover" />
@@ -59,7 +56,6 @@
                 </p>
             </div>
             @else
-            <!-- Genap (gambar di kanan, deskripsi di kiri) -->
             <div class="block md:hidden flex justify-center pt-10">
                 <img src="{{ $item['fotobrand'] }}" alt="Brand {{ $item->namabrand }}"
                     class="rounded-lg shadow-lg w-full md:w-3/4 md:h-3/4 object-cover" />

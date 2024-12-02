@@ -1,11 +1,11 @@
-
 @extends('layout.utamadashboard')
 
 @section('kontendashboard')
 <div class="container mx-auto px-4">
-  <h1 class="text-center text-2xl font-semibold my-5">Data kategori</h1>
+  <h1 class="text-center text-2xl font-semibold my-5">Data Kategori Barang</h1>
   <div class="flex justify-end mb-4">
-    <a href="{{ url('dashboard/kategori/create') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">Tambah Kategori</a>
+    <a href="{{ url('dashboard/kategori/create') }}"
+      class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">Tambah Kategori</a>
   </div>
   <div class="overflow-x-auto mt-6">
     <table id="kategoriTable" class="min-w-full bg-white border border-gray-300">
@@ -23,13 +23,15 @@
           <td class="py-2 px-4 border border-gray-300">{{ $index + 1 }}</td>
           <td class="py-2 px-4 border border-gray-300">
             <div class="flex justify-center space-x-2">
-              <a href="{{ url('dashboard/kategori/' . $ktg->id . '/edit') }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-1 px-2 rounded" title="Edit">
+              <a href="{{ url('dashboard/kategori/' . $ktg->id . '/edit') }}"
+                class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-1 px-2 rounded" title="Edit">
                 <i class="fa-regular fa-pen-to-square"></i>
               </a>
               <form action="{{ url('dashboard/kategori/' . $ktg->id) }}" method="POST" class="inline-block">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-2 rounded" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" title="Delete">
+                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-2 rounded"
+                  onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" title="Delete">
                   <i class="fa-regular fa-trash-can"></i>
                 </button>
               </form>
@@ -37,7 +39,7 @@
           </td>
           <td class="py-2 px-4 border border-gray-300">{{ $ktg->kdktg }}</td>
           <td class="py-2 px-4 border border-gray-300">{{ $ktg->nmkategori }}</td>
-                  </tr>
+        </tr>
         @endforeach
       </tbody>
     </table>

@@ -30,8 +30,8 @@
             "marginLeft": 20,
             "marginRight": 20,
             "btnPosition": "right",
-            "whatsAppNumber": "6285215321818",
-            "welcomeMessage": "Halo, ada yang bisa kami bantu?",
+            "whatsAppNumber": "62895359515260",
+            "welcomeMessage": "Halo, Saya mau pesan barang dari GM!",
             "zIndex": 999999,
             "btnColorScheme": "light"
         };

@@ -75,7 +75,6 @@
             <p class="text-gray-500">Media tidak dikenali</p>
             @endif
           </td>
-          td
 
         </tr>
         @endforeach

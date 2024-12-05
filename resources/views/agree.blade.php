@@ -71,8 +71,10 @@
                 </p>
             </div>
             <div class="flex justify-center hidden md:block">
-                <img src="{{ $item['fotobrand'] }}" alt="Brand {{ $item->namabrand }}"
-                    class="rounded-lg shadow-lg w-full md:w-3/4 md:h-3/4 object-cover" />
+                <div class="justify-center flex">
+                    <img src="{{ $item['fotobrand'] }}" alt="Brand {{ $item->namabrand }}"
+                        class="rounded-lg shadow-lg w-full md:w-3/4 md:h-3/4 object-cover" />
+                </div>
             </div>
             @endif
             @endif
@@ -152,13 +154,14 @@
 
 
     <!-- Tombol Lihat Lainnya -->
-    <div class="flex justify-center pb-10 md:justify-end">
-        <a href="{{ url('/katalog?search=&kategori=&brand=1') }}"
-            class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full shadow-xl transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
-            Lihat Lainnya
-        </a>
+    <div class="px-10">
+        <div class="flex justify-center pb-10 md:justify-end">
+            <a href="{{ url('/katalog?search=&kategori=&brand=1') }}"
+                class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full shadow-xl transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
+                Lihat Lainnya
+            </a>
+        </div>
     </div>
-
 </section>
 
 {{-- Agree Kids --}}
@@ -203,15 +206,15 @@
         @endforeach
     </div>
 
-
-    <!-- Tombol Lihat Lainnya -->
-    <div class="flex justify-center pb-10 md:justify-end">
-        <a href="{{ url('/katalog?search=&kategori=&brand=6') }}"
-            class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-full shadow-xl transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
-            Lihat Lainnya
-        </a>
+    <div class="px-10">
+        <!-- Tombol Lihat Lainnya -->
+        <div class="flex justify-center pb-10 md:justify-end">
+            <a href="{{ url('/katalog?search=&kategori=&brand=6') }}"
+                class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-full shadow-xl transform transition duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                Lihat Lainnya
+            </a>
+        </div>
     </div>
-
 </section>
 
 

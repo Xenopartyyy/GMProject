@@ -80,10 +80,10 @@
                     {!! nl2br(e($produk->deskbrg)) !!}
                 </p>
 
-                <div class="mt-6 flex space-x-4 justify-start">
+                <div class="mt-6 flex flex-wrap gap-4">
                     @if ($produk->link_shopee)
                     <a href="{{ $produk->link_shopee }}" target="_blank"
-                        class="flex items-center justify-center px-4 py-2 bg-orange-600 text-white text-sm font-semibold rounded-lg shadow-md hover:bg-orange-700 focus:outline-none">
+                        class="flex items-center justify-center px-4 py-2 bg-orange-600 text-white text-sm font-semibold rounded-lg shadow-md hover:bg-orange-700 focus:outline-none w-full sm:w-auto">
                         <i class="fa-brands fa-shopify"></i>
                         <p>&nbsp;Shopee</p>
                     </a>
@@ -91,7 +91,7 @@
 
                     @if ($produk->link_tokped)
                     <a href="{{ $produk->link_tokped }}" target="_blank"
-                        class="flex items-center justify-center px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none">
+                        class="flex items-center justify-center px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none w-full sm:w-auto">
                         <i class="fa-solid fa-shop"></i>
                         <p>&nbsp;Tokopedia</p>
                     </a>
@@ -99,7 +99,7 @@
 
                     @if ($produk->link_ttshop)
                     <a href="{{ $produk->link_ttshop }}" target="_blank"
-                        class="flex items-center justify-center px-4 py-2 bg-black text-white text-sm font-semibold rounded-lg shadow-md hover:bg-gray-700 focus:outline-none">
+                        class="flex items-center justify-center px-4 py-2 bg-black text-white text-sm font-semibold rounded-lg shadow-md hover:bg-gray-700 focus:outline-none w-full sm:w-auto">
                         <i class="fa-brands fa-tiktok"></i>
                         <p>&nbsp;Tiktokshop</p>
                     </a>
@@ -113,7 +113,7 @@
 <!-- Modal -->
 <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 items-center justify-center hidden flex">
     <div class="relative bg-white rounded-lg shadow-lg">
-        <img id="modalImage" src="" alt="" class="w-full h-auto rounded-lg">
+        <img id="modalImage" src="" alt="" class="w-full h-auto rounded-lg" style="max-width: 650px">
     </div>
 </div>
 

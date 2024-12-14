@@ -11,7 +11,7 @@
 
         <!-- Artikel Barang -->
         <div>
-            <label for="noart" class="block text-lg font-semibold text-gray-700">Nomor Artikel</label>
+            <label for="noart" class="block text-lg font-semibold text-gray-700">Artikel Barang</label>
             <input type="text" name="noart"
                 class="mt-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 p-3 @error('noart') is-invalid @enderror"
                 value="{{ old('noart') }}" placeholder="Masukkan Nama Barang" />

@@ -12,7 +12,7 @@
             <!-- Search Filter -->
             <div>
                 <label for="noart" class="block text-lg font-medium text-white mb-2">Cari Artikel:</label>
-                <input id="noart" name="noart" type="number" placeholder="Cari nomor artikel produk"
+                <input id="noart" name="noart" type="text" placeholder="Cari nomor artikel produk"
                     value="{{ request('noart') }}"
                     class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white text-gray-800">
             </div>
@@ -96,8 +96,8 @@
     <!-- Updated Grid for Cards -->
     <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         @foreach($produk as $p)
-        <div
-            class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105 text-sm sm:text-base">
+        <a href="{{ route('detail', ['id' => $p->id]) }}"
+            class="block bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105 text-sm sm:text-base">
             @php
             $fotoPertama = $p->fotobrg ? json_decode($p->fotobrg, true)[0] ?? null : null;
             @endphp
@@ -117,11 +117,7 @@
                 <p class="text-sm sm:text-lg font-bold text-blue-500 mt-2">Rp{{ number_format($p->hrgbrg, 0, ',', '.')
                     }}
                 </p>
-                <div class="flex items-center justify-between mt-2">
-                    <a href="{{ route('detail', ['id' => $p->id]) }}"
-                        class="bg-blue-500 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-blue-600 transition-colors">
-                        Detail
-                    </a>
+                <div class="flex items-center justify-end mt-2">
                     <p class="text-xs sm:text-sm">
                         <span
                             class="inline-block px-2 sm:px-2 py-1 rounded-full text-white font-medium {{ $p->stokbrg === 'Ready' ? 'bg-green-500' : 'bg-red-500' }}">
@@ -130,7 +126,7 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </a>
         @endforeach
     </div>
 

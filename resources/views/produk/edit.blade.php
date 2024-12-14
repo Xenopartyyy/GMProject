@@ -12,7 +12,7 @@
 
         <!-- Nama Barang -->
         <div>
-            <label for="noart" class="block text-lg font-semibold text-gray-700">Nama Barang</label>
+            <label for="noart" class="block text-lg font-semibold text-gray-700">Artikel Barang</label>
             <input type="text" name="noart"
                 class="mt-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition duration-200 p-3 @error('noart') is-invalid @enderror"
                 value="{{ old('noart', $produk->noart) }}" placeholder="Masukkan Nama Barang" />
@@ -158,10 +158,11 @@
             <div class="flex items-center space-x-4">
                 <img src="{{ $foto }}" alt="Gambar {{ $index + 1 }}" class="w-24 h-24 object-cover border rounded-lg">
                 <input type="hidden" name="existing_images[]" value="{{ $foto }}">
-                <label class="flex items-center">
+                <label class="flex items-center space-x-2">
+                    <!-- Custom Checkbox -->
                     <input type="checkbox" name="deleted_images[]" value="{{ $foto }}"
-                        class="form-checkbox rounded border-gray-300 focus:ring-2 focus:ring-blue-400">
-                    <span class="ml-2">Hapus</span>
+                        class="form-checkbox h-5 w-5 text-red-600 border-gray-300 rounded-lg transition duration-150 ease-in-out focus:ring-2 focus:ring-blue-500 focus:outline-none checked:bg-red-600 checked:border-transparent hover:ring-2 hover:ring-red-300">
+                    <span class="ml-2 text-sm font-medium text-gray-700">Hapus</span>
                 </label>
             </div>
             @endforeach

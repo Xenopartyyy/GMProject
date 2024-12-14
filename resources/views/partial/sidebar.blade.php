@@ -4,7 +4,7 @@
   <!-- Sidebar -->
   <div id="sidebar"
     class="fixed inset-y-0 left-0 w-64 bg-gray-800 text-white transform -translate-x-full transition-transform duration-300 ease-in-out z-30 shadow-lg z-50">
-    <div class="p-4 text-2xl font-bold text-center border-b border-gray-700">MyGM Catalog Dashboard</div>
+    <div class="p-4 text-2xl font-bold text-center border-b border-gray-700">MyGMCommerce Dashboard</div>
     <nav class="mt-4 flex-grow space-y-1">
 
       <div class="relative">

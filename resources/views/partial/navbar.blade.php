@@ -2,7 +2,7 @@
     <div class="max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
         <!-- Logo -->
         <div class="flex items-center">
-            <div class="text-6xl text-green-200 font-black">G<span class="text-white">M</span></div>
+            <div class="text-6xl text-white font-black">GM</div>
         </div>
 
         <!-- Desktop Navigation -->
@@ -67,7 +67,7 @@
             <li><a href="{{ url('/katalog') }}"
                     class="block text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Katalog
                     Produk</a></li>
-            <li><a href="{{ url('/contact') }}"
+            <li><a href="{{ url('/tentangkami') }}"
                     class="block text-white hover:bg-green-500 rounded-lg px-3 py-2 transition duration-300">Hubungi
                     Kami</a></li>
         </ul>

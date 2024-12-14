@@ -2,7 +2,9 @@
     <div class="max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
         <!-- Logo -->
         <div class="flex items-center">
-            <div class="text-6xl text-white font-black">GM</div>
+            <div class="text-6xl text-white font-black">
+                <a href="{{ url('/') }}">GM</a>
+            </div>
         </div>
 
         <!-- Desktop Navigation -->

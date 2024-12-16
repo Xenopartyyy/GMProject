@@ -21,7 +21,10 @@ return new class extends Migration
             $table->json('ukbrg'); 
             $table->text('deskbrg');
             $table->decimal('hrgbrg', 10, 2);
-            $table->enum('stokbrg', ['Ready', 'Kosong']); 
+            $table->enum('stokbrg', ['Ready', 'Kosong']);
+            $table->string('link_shopee');
+            $table->string('link_tokped');
+            $table->string('link_ttshop'); 
             $table->timestamps(); 
         });
     }

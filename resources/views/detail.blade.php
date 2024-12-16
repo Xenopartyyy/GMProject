@@ -17,21 +17,22 @@
                     <div class="relative w-full h-full overflow-visible">
                         <!-- Slider dengan overflow-hidden -->
                         <div id="carousel"
-                            class="relative w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] xl:h-[450px]  xl:w-[450px]  overflow-hidden">
+                            class="relative w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] xl:h-[450px] xl:w-[450px] overflow-hidden">
                             <div id="carousel-track" class="flex transition-transform duration-300 ease-in-out">
                                 @php
                                 $images = json_decode($produk->fotobrg, true) ?? [];
+                                $imageCount = count($images);
                                 @endphp
                                 @foreach ($images as $image)
                                 <img src="{{ $image }}" alt="{{ $produk->nmbrg }}"
-                                    class="w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] xl:h-[450px]  xl:w-[450px]  object-cover rounded-md shadow-md cursor-pointer">
+                                    class="w-[225px] h-[225px] sm:w-[250px] sm:h-[250px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] xl:h-[450px] xl:w-[450px] object-cover rounded-md shadow-md cursor-pointer">
                                 @endforeach
                             </div>
                         </div>
 
                         <!-- Navigation Buttons -->
                         <button id="prevBtnModal"
-                            class="absolute top-1/2 left-[-50px] transform -translate-y-1/2 flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-100 focus:outline-none">
+                            class="absolute top-1/2 left-[-50px] transform -translate-y-1/2 flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-100 focus:outline-none {{ $imageCount <= 1 ? 'hidden' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" class="w-6 h-6 text-gray-600">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -40,7 +41,7 @@
                         </button>
 
                         <button id="nextBtnModal"
-                            class="absolute top-1/2 right-[-50px] transform -translate-y-1/2 flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-100 focus:outline-none">
+                            class="absolute top-1/2 right-[-50px] transform -translate-y-1/2 flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-100 focus:outline-none {{ $imageCount <= 1 ? 'hidden' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" class="w-6 h-6 text-gray-600">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
